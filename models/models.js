@@ -1,4 +1,9 @@
+require("dotenv").config()
+
 const mongoose = require("mongoose")
+mongoose.set("strictQuery", false)
+
+const mongoDB = process.env.MONGO_STRING
 
 const Schema = mongoose.Schema
 
@@ -23,5 +28,23 @@ const Menu = new Schema({
 	FoodAvailable: [ Schema.Types.ObjectId ], //Foreign Keys from Food
 })
 
-S
 
+async function main(){
+	await mongoose.connect(mongoDB)
+
+	const foodModel = mongoose.model("Food", Food)
+
+	const food = new foodModel({
+		FoodName: "Taco",
+		Ingredients: [],
+		isLimited: true,
+		FoodPrice: 9.10,
+		TimeTakes: 300,
+	})
+
+	await food.save()
+
+	mongoose.connection.close()
+}
+
+main()

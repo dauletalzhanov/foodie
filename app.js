@@ -7,7 +7,12 @@ require("dotenv").config()
 
 const mongoose = require("mongoose")
 mongoose.set("strictQuery", false)
-const mongoDB = process.env.mongo_string
+const mongoDB = process.env.MONGO_STRING
+
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
