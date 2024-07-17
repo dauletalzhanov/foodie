@@ -1,0 +1,20 @@
+extends layout.pug
+
+block content 
+	h1= title
+
+	form(method="POST")
+		.name 
+			label(for="employee_name") Employee Name
+			input(type="text", name="employee_name")
+		
+		.restaurant 
+			label Restaurant 
+			input(type="text", name="restaurant_id")
+		
+		.manager 
+			label Manager 
+			input(type="text" name="manager")
+
+
+		button(type="submit") Submit!

@@ -1,0 +1,8 @@
+extends layout.pug
+
+block content 
+	h1= title
+
+	div
+		each employee in allEmployees 
+			p #{employee.EmployeeName} #{employee.Manager}, #{employee.Restaurant}
