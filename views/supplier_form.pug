@@ -1,0 +1,22 @@
+extends layout.pug 
+
+block content 
+	h1= title
+
+	a(href="/supplier") all suppliers
+
+	form(method="POST")
+		.supplier_name 
+			label(for="supplier_name") Supplier Name
+			input(type="text", name="supplier name")
+		
+		.ingredients 
+			label Ingredients 
+			textarea(name="ingredients") 
+		
+		.phone_number 
+			label Phone Number 
+			input(type="text" name="phone number")
+
+
+		button(type="submit") Submit!

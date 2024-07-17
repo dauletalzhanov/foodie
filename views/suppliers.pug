@@ -1,0 +1,9 @@
+extends layout.pug 
+
+block content 
+	h1= title
+
+	a(href="/supplier/create") add a supplier 
+	
+	each supplier of allSuppliers
+		p= supplier
