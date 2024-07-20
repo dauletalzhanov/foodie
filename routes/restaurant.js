@@ -5,8 +5,16 @@ const Restaurant = require("../models/Restaurant")
 const Supplier = require("../models/Supplier")
 const Menu = require("../models/Menu")
 
+router.get("/", async function(req, res, next){
+	const allRestaurants = await Restaurant.find({})
 
-router.get('/', async function(req, res, next) {
+	res.render("restaurant", { 
+		title: "All Restaurants",
+		allRestaurants
+	})
+})
+
+router.get('/add', async function(req, res, next) {
 	const allSuppliers = await Supplier.find({})
 	const allMenu = await Menu.find({})
 	
@@ -15,7 +23,24 @@ router.get('/', async function(req, res, next) {
 		allSuppliers,
 		allMenu
 	});
+})
 
+router.post("/add", async function(req, res, next){
+	const content = req.body
+
+	console.log(content)
+
+	const newRestaurant = new Restaurant({
+		"RestaurantName": content["restaurant_name"],
+		//"MenuID": content["menu"],
+		"SupplierList": content["supplier"],
+		"Address": content["address"]
+
+	})
+
+	await newRestaurant.save()
+
+	res.redirect("/")
 })
 
 module.exports = router;

@@ -1,0 +1,11 @@
+extends layout
+
+block content 
+	h1= title
+	
+	div
+		a(href="/restaurant/add") Add Restaurant
+
+	div
+		each restaurant of allRestaurants
+			p= restaurant
