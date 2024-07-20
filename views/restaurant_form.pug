@@ -1,0 +1,28 @@
+extends layout 
+
+block content 
+	h1= title
+
+	div
+		form(method="POST")
+			.restaurant_name
+				label Restaurant Name
+				input(type="text", name="restaurant_name")
+			
+			.menu
+				select(name="menu") 
+					option(value="none") select menu
+					each menu in allMenu
+						option(value="") menu
+			
+			.supplier
+				select(name="supplier")
+					option(value="none") select supplier 
+					each supplier of allSuppliers
+						option(value=`${supplier._id}` ) #{supplier.SupplierName}
+
+			.address
+				label Address
+				input(type="text", name="address")
+			.button
+				button(type="submit") Submit! 
