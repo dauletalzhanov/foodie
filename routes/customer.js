@@ -4,29 +4,29 @@ var router = express.Router();
 const Customer = require("../models/Customer")
 
 router.get('/', function(req, res, next) {
-  res.render('employee', { title: 'Add employee' });
+  res.render('customer_form', { title: 'Add customer' });
 });
 
 router.post("/", async function(req, res, next){
 	const content = req.body
 	console.log(content)
 
-	const employee = new Employee({
-		EmployeeName: content["employee_name"],
+	const customer = new Customer({
+		EmployeeName: content["customer_name"],
 		//RestaurantID: content["restaurant_id"],
 		//Manager: 			content["manager"]
 	})
-	await employee.save()
+	await customer.save()
 
-	res.redirect("/employee")
+	res.redirect("/customer/all")
 })
 
 router.get("/all", async function(req, res, next){
-	const allEmployees = await Employee.find() // find all
+	const allCustomers = await Customer.find() // find all
 	
-	res.render("employees", { 
-		title: "All Employees",
-		allEmployees,
+	res.render("customers", { 
+		title: "All Customers",
+		allCustomers,
 	})
 })
 

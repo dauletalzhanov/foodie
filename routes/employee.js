@@ -4,7 +4,7 @@ var router = express.Router();
 const Employee = require("../models/Employee")
 
 router.get('/', function(req, res, next) {
-  res.render('employee', { title: 'Add employee' });
+  res.render('employee_form', { title: 'Add employee' });
 });
 
 router.post("/", async function(req, res, next){

@@ -2,3 +2,15 @@ extends layout.pug
 
 block content 
 	h1= title
+
+	form(method="POST")
+		.name 
+			label(for="customer_name") Customer Name
+			input(type="text", name="customer_name")
+		
+		.email
+			label Email 
+			input(type="text", name="customer_email")
+
+
+		button(type="submit") Submit!

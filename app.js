@@ -17,8 +17,9 @@ async function main() {
 // routing
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const employeeRouter = require("./routes/employee")
-const supplierRouter = require("./routes/supplier")
+const employeeRouter = require("./routes/employee");
+const supplierRouter = require("./routes/supplier");
+const customerRouter = require("./routes/customer");
 
 const app = express();
 
@@ -36,14 +37,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/supplier", supplierRouter)
 app.use("/employee", employeeRouter)
-
-app.use("/food", (req, res, next)=>{
-  res.render("foods", {
-    title: "FOODS"
-  })
-
-})
-
+app.use("/customer", customerRouter)
 
 
 // catch 404 and forward to error handler

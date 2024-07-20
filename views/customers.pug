@@ -1,0 +1,8 @@
+extends layout.pug
+
+block content 
+	h1= title
+
+	div
+		each customer in allCustomers 
+			p #{customer}
