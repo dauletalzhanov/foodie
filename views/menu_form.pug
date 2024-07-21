@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+	h1= title
+
+	form(method="POST")
+		div
+			label Brand Name
+			input(type="text", name="menu_name") 
+
+		div
+			
+			div
+				label Add Food
+				input(type="checkbox", name="") 
+			
+			each food of allFood 
+				div
+					label #{food.FoodName}
+					input(type="checkbox", name=`${food._id}`)
+		
+		button(type="submit") Submit

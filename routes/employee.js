@@ -2,9 +2,16 @@ var express = require('express');
 var router = express.Router();
 
 const Employee = require("../models/Employee")
+const Restaurant = require("../models/Restaurant")
 
-router.get('/', function(req, res, next) {
-  res.render('employee_form', { title: 'Add employee' });
+
+router.get('/', async function(req, res, next) {
+	const allRestaurant = await Restaurant.find({})
+
+  res.render('employee_form', { 
+		title: 'Add employee',
+		allRestaurant
+	});
 });
 
 router.post("/", async function(req, res, next){

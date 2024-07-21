@@ -21,6 +21,10 @@ const employeeRouter = require("./routes/employee");
 const supplierRouter = require("./routes/supplier");
 const customerRouter = require("./routes/customer");
 const restaurantRouter = require("./routes/restaurant");
+const menuRouter = require("./routes/menu")
+const foodRouter = require("./routes/food")
+const ingredientRouter = require("./routes/ingredient")
+const orderRouter = require("./routes/order")
 
 const app = express();
 
@@ -28,7 +32,6 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-//app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -40,8 +43,10 @@ app.use("/supplier", supplierRouter)
 app.use("/employee", employeeRouter)
 app.use("/customer", customerRouter)
 app.use("/restaurant", restaurantRouter)
-
-
+app.use("/menu", menuRouter)
+app.use("/food", foodRouter)
+app.use("/ingredient", ingredientRouter)
+app.use("/order", orderRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
