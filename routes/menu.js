@@ -20,14 +20,16 @@ router.post("/", async function(req, res, next){
 
 	console.log(content)
 
-	/*
+	
 	const newMenu = new Menu({
 		MenuName: content["menu_name"],
-		FoodAvailable: content[""]
+		//FoodAvailable: content[""]
 	})
-	*/
+	
 
-	//await newMenu.save()
+	await newMenu.save()
+
+
 
 	res.redirect("/")
 })
