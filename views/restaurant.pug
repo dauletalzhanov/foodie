@@ -9,3 +9,13 @@ block content
 	div
 		each restaurant of allRestaurants
 			p= restaurant
+
+			form(method="post") 
+				input(type="hidden", name="delete" value=`${restaurant._id}`)
+				button(type="submit") Delete Restaurant
+
+			br
+
+			a(href=`/order/restaurant=${restaurant._id}`) order from #{restaurant.RestaurantName}
+	
+	div

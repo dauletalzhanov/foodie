@@ -14,6 +14,14 @@ router.get("/", async function(req, res, next){
 	})
 })
 
+// removing restaurant
+router.post("/", async function(req, res, next){
+	const restaurant_id = req.body["delete"]
+	await Restaurant.findByIdAndDelete(restaurant_id)
+	
+	res.redirect("/restaurant/")
+})
+
 router.get('/add', async function(req, res, next) {
 	const allSuppliers = await Supplier.find({})
 	const allMenu = await Menu.find({})
@@ -27,7 +35,6 @@ router.get('/add', async function(req, res, next) {
 
 router.post("/add", async function(req, res, next){
 	const content = req.body
-
 	console.log(content)
 
 	const newRestaurant = new Restaurant({
@@ -35,7 +42,6 @@ router.post("/add", async function(req, res, next){
 		"MenuID": content["menu"],
 		"SupplierList": content["supplier"],
 		"Address": content["address"]
-
 	})
 
 	await newRestaurant.save()
