@@ -4,9 +4,13 @@ block content
 	h1= title
 
 	form(method="POST") 
+		
 		div
 			label Food List
 			input(type="text", name="food_name")
+
+			each restaurant of allRestaurant 
+				p= restaurant
 
 		div
 			select(name="is_limited")

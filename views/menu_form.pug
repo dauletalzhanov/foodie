@@ -1,5 +1,8 @@
 extends layout 
 
+block scripts
+	//script(src="menu_form.js") 
+
 block content 
 	h1= title
 
@@ -9,8 +12,9 @@ block content
 			input(type="text", name="menu_name") 
 
 		div
-			
-			div
+			div.foods
+
+			div.allFoods
 				label Add Food
 				input(type="checkbox", name="") 
 			

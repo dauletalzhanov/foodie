@@ -1,0 +1,10 @@
+extend layout
+
+block content 
+	h1= title
+
+	each menu of allMenu 
+		form(method="post")  
+			p= menu
+			input(type="hidden", name="menu_id" value=`${menu._id}`)
+			button(type="submit") delete this  

@@ -13,7 +13,7 @@ block content
 				select(name="menu") 
 					option(value="none") select menu
 					each menu in allMenu
-						option(value="") menu
+						option(value=`${menu._id}`) #{menu.MenuName}
 			
 			.supplier
 				select(name="supplier")

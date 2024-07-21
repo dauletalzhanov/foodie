@@ -7,8 +7,9 @@ const Food = require("../models/Food")
 const Menu = require("../models/Menu")
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('order_form', { title: 'Add Order' });
+router.get('/', async function(req, res, next) {
+  const allRestaurant = await Restaurant.find({})//.populate("Menu")
+  res.render('order_form', { title: 'Add Order', allRestaurant });
 });
 
 module.exports = router;

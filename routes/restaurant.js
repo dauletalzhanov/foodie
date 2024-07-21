@@ -6,7 +6,7 @@ const Supplier = require("../models/Supplier")
 const Menu = require("../models/Menu")
 
 router.get("/", async function(req, res, next){
-	const allRestaurants = await Restaurant.find({})
+	const allRestaurants = await Restaurant.find()//.populate("SupplierList").exec()
 
 	res.render("restaurant", { 
 		title: "All Restaurants",
@@ -32,7 +32,7 @@ router.post("/add", async function(req, res, next){
 
 	const newRestaurant = new Restaurant({
 		"RestaurantName": content["restaurant_name"],
-		//"MenuID": content["menu"],
+		"MenuID": content["menu"],
 		"SupplierList": content["supplier"],
 		"Address": content["address"]
 
