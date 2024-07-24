@@ -49,4 +49,14 @@ router.post("/add", async function(req, res, next){
 	res.redirect("/")
 })
 
+/////////////////////////////////////////////
+router.get("/:restaurant_id/food", async function(req, res, next){
+	const restaurant_id = req.params.restaurant_id
+	const restaurant = await Restaurant.findById(restaurant_id)
+
+	const menu = await Menu.findById(restaurant.MenuID).populate("FoodAvailable")
+
+	res.send(menu.FoodAvailable)
+})
+
 module.exports = router;

@@ -29,4 +29,10 @@ router.post("/", async function(req, res, next){
 	res.redirect("/")
 })
 
+router.get("/all", async function(req, res, next){
+	const foods = await Food.find({})
+
+	res.render("food_all", { title: "All Food", foods })
+})
+
 module.exports = router;

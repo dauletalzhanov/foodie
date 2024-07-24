@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 // Pages
 import Home from './Pages/Home';
+import Shop from './Pages/Shop';
 
 // Router
 import {
@@ -12,13 +13,12 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />
+    element: <Home />,
+    
   },
   {
-    path: "/dawg",
-    element: (<>
-      <h1>hello dawg</h1>
-    </>)
+    path: "/shop",
+    element: <Shop />
   }
 ])
 
