@@ -3,6 +3,7 @@ import { useState } from 'react'
 // Pages
 import Home from './Pages/Home';
 import Shop from './Pages/Shop';
+import Order from './Pages/Order';
 
 // Router
 import {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/shop",
     element: <Shop />
+  },
+  {
+    path: "/order",
+    element: <Order />
   }
 ])
 
