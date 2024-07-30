@@ -2,20 +2,26 @@
 /*
 ***********************************************************
 */
+
 body {
 	padding: 0;
 	margin: 0;
 }
 
 .total-product {
-	display: flex;
+	display: none;
 	justify-content: space-between;
 
-	width: 33vw;
+	width: 30vw;
+	height: 6vw;
 
-	background-color: #d1d1d1;
+	background-color: #eeeeee;
 	border: 1px solid #999999;
 	border-radius: 16px;
+
+	-webkit-box-shadow: 2px 9px 21px -2px #b3b3b3;
+	-moz-box-shadow: 2px 9px 21px -2px #b3b3b3;
+	box-shadow: 2px 9px 21px -2px #b3b3b3;
 
 	padding: 1vw;
 
@@ -28,9 +34,26 @@ body {
 .total-product > .leftie > p {
 	margin: 0;
 }
+
+.order-button {
+	height: 5vw;
+	width: 12vw;
+	background-color: #BE92F3;
+	border: 1px solid #797979;
+	border-radius: 10vw;
+}
 /*
 ***********************************************************
 */
+
+.shop-header {
+	text-align: center;
+	background-color: #eeeeee;
+	border: 1px solid #b1b1b1;
+	border-radius: 16px;
+	margin: 1vw 10vw;
+	padding: 2vw;
+}
 
 .catalogue {
 	display: flex;

@@ -7,6 +7,7 @@ import "./shop.css"
 export default function Shop(){
 	const [menu, setMenu] = useState([])
 	const [balance, setBalance] = useState(0)
+	const [basket, setBasket] = useState([])
 
 	const navigate = useNavigate()
 
@@ -33,9 +34,15 @@ export default function Shop(){
 
 	function addButton(event){
 		const food = event.target.parentNode.id
-		console.log(menu[food])
+		const foodItem = menu[food]
+		//console.log(menu[food])
 
 		setBalance(i => i + menu[food]["FoodPrice"])
+		//setBasket(b => [ ...b, foodItem ])
+		basket.unshift(foodItem)
+		
+		let node = document.querySelector(".total-product")
+		node.style.display = "flex"
 	}
 
 	function orderItems(){
@@ -43,7 +50,7 @@ export default function Shop(){
 	}
 
 	return(<>
-		<h1>Shop</h1>
+		<h1 className="shop-header">Food Catalog</h1>
 
 		<div className="catalogue">
 			{menu.map((food, index) => {
@@ -67,7 +74,7 @@ export default function Shop(){
 				<Link to="/items">List of Items</Link>
 			</div>
 
-			<button onClick={orderItems}>Proceed to Order</button>
+			<button className="order-button" onClick={orderItems}>Proceed to Order</button>
 
 		</div>
 
