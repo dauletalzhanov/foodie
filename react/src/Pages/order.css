@@ -46,6 +46,8 @@
 	height: 7vw;
 	background-color: white;
 
+	padding: 0 1vw;
+
 	border: 1px solid #bebebe;
 	border-radius: 16px;
 
@@ -64,7 +66,7 @@
 	color: white;
 	border: none;
 
-	width: 2.5vw;
+	width: 1.8vw;
 	height: 2vw;
 }
 
@@ -73,14 +75,16 @@
 	color: black;
 }
 
-.rightie-cart-item > button:first-child {
-	border-top-left-radius: 16px;
-	border-bottom-left-radius: 16px;
-}
-
 .rightie-cart-item > button:nth-child(n+1) {
 	border-top-right-radius: 16px;
 	border-bottom-right-radius: 16px;
+}
+
+.rightie-cart-item > button:nth-child(1){
+	border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
 }
 
 .rightie-cart-item > p {
@@ -92,5 +96,9 @@
 	height: 2vw;
 
 	text-align: center;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 }
