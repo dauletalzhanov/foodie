@@ -8,6 +8,7 @@ export default function Shop(){
 	const [menu, setMenu] = useState([])
 	const [balance, setBalance] = useState(0)
 	const [basket, setBasket] = useState([])
+	const [quantities, setQuantities] = useState({})
 
 	const navigate = useNavigate()
 
@@ -34,13 +35,33 @@ export default function Shop(){
 
 	function addButton(event){
 		const food = event.target.parentNode.id
-		const foodItem = menu[food]
-		//console.log(menu[food])
+		let foodItem = menu[food]
+		const foodName = foodItem["FoodName"]
 
 		setBalance(i => i + menu[food]["FoodPrice"])
-		//setBasket(b => [ ...b, foodItem ])
-		basket.unshift(foodItem)
 		
+		/*
+		if(basket.includes(foodItem)){
+			const foodIndex = basket.indexOf(foodItem)
+			foodItem["Quantity"]++
+			basket[foodIndex] = foodItem
+		}
+		else {
+			foodItem["Quantity"] = 1
+			basket.unshift(foodItem)
+		}
+		*/
+			
+		
+		quantities[foodName] ? quantities[foodName]++ : quantities[foodName] = 1 
+		
+		if(quantities[foodName] == 1)
+			basket.unshift(foodItem)
+		
+		console.log(quantities)
+		console.log(basket)
+		
+
 		let node = document.querySelector(".total-product")
 		node.style.display = "flex"
 	}
@@ -75,7 +96,7 @@ export default function Shop(){
 			</div>
 
 			<button className="order-button" onClick={orderItems}>Proceed to Order</button>
-			<Link to="/order" state={ basket }>List of Items</Link>
+			<Link to="/order" state={{ basket, quantities }}>List of Items</Link>
 
 		</div>
 
