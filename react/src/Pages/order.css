@@ -73,6 +73,7 @@
 .rightie-cart-item > button:active{
 	background-color: white;
 	color: black;
+	border: 1px solid black;
 }
 
 .rightie-cart-item > button:nth-child(n+1) {
@@ -102,3 +103,44 @@
 	align-items: center;
 
 }
+
+/*****************************/
+.cart-sidebar{
+	background-color: white;
+	border-radius: 16px;
+
+	padding: 1vw;
+
+	margin: 1vw auto;
+
+	width: 16vw;
+	height: 29vw;
+
+	-webkit-box-shadow: 0px 0px 22px -6px #ebebeb;
+	-moz-box-shadow: 0px 0px 22px -6px #ebebeb;
+	box-shadow: 0px 0px 22px -6px #ebebeb;
+}
+
+.cart-sidebar > div > h2 {
+	margin: 0;
+	margin-bottom: 1vw;
+
+}
+
+.cart-sidebar > div {
+	display: flex;
+	flex-direction: column;
+
+	justify-content: space-between;
+}
+
+.cart-sidebar > div > p {
+	margin: 0;
+	margin-bottom: 0.5vw;
+}
+
+/***************************************/
+
+
+
+/***************************************/

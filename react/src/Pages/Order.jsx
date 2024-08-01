@@ -1,6 +1,7 @@
 
 import "./order.css"
 
+import React from "react"
 import { useLocation } from "react-router-dom"
 import { useEffect, useState } from "react"
 
@@ -13,10 +14,34 @@ export default function Order(){
 	const { initBasket, initQuantity } = location.state
 	
 	const [ basket, setBasket ] = useState([...location.state["basket"]])
-	const [ quantities, setQuantities] = useState({...location.state["quantities"]})
+	const [ quantities, setQuantities ] = useState({...location.state["quantities"]})
+	const [ total, setTotal ] = useState(0)
 
 	//console.log(basket)
-	//console.log(quantities)
+	console.log(quantities)
+
+	console.log(basket)
+
+	useEffect(()=>{
+		let tempTotal = 0
+		for(let i=0; i<basket.length; i++){
+			tempTotal += basket[i].FoodPrice * quantities[basket[i].FoodName]
+
+			console.log(tempTotal)
+		}
+
+		setTotal(tempTotal)
+
+		
+		for(let i=0; i<basket.length; i++){
+			basket[i] = {
+				...basket[i],
+				quantity : quantities[basket[i].FoodName]
+			}
+		}
+		
+
+	}, [quantities])
 
 	function incQuantity(event){
 		console.log(event.target.parentNode.id)
@@ -34,7 +59,25 @@ export default function Order(){
 		quantities[idName] > 1 ? quantities[idName]-- : quantities[idName] = 0
 
 		console.log(quantities)
+	}
 
+	function quantChange(event){
+		console.log(event.target.parentNode.id)
+		const idName = event.target.parentNode.id
+		const changeValue = event.target.value
+
+		/*
+			let newQuant = {
+			...quantities,
+			quantities[idName]: changeValue
+		}
+		*/
+		let newQuant = quantities
+		newQuant[idName] = changeValue
+		
+		setQuantities(newQuant)
+
+		console.log(quantities)
 	}
 
 	return(<>
@@ -51,18 +94,31 @@ export default function Order(){
 						 </div>
 						
 						<div id={b.FoodName} className="rightie-cart-item">
-							<button onClick={incQuantity}>{"<"}</button>
+							<button onClick={decQuantity}>{"-"}</button>
 
-							<p>{quantities[b.FoodName]}</p>
+							<p>{ b.quantity }</p>
+							<input type="number" onChange={quantChange} value={quantities[b.FoodName]} />
 
-							<button onClick={decQuantity}>{">"}</button>
+							<button onClick={incQuantity}>{"+"}</button>
 						</div>
 					</div>)
 				})}
 			</div>
 
 			<div>
-				three four
+				<div className="cart-sidebar">
+					<div>
+						<h2>Total</h2>
+						<p>Food: { total } USD</p>
+						<p>Delivery: 5 USD</p>
+					</div>
+
+					<div>
+						<p className="total-price" > 
+							Total: { total + 5 } USD
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 
