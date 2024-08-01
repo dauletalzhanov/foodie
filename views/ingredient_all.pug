@@ -1,0 +1,9 @@
+extend layout 
+
+block content
+	h1= title
+
+	a(href="http://localhost:3000/ingredient/create") Add Ingredient 
+
+	each ingredient of allIngredients 
+		p= ingredient

@@ -18,9 +18,7 @@ export default function Order(){
 	const [ total, setTotal ] = useState(0)
 
 	//console.log(basket)
-	console.log(quantities)
-
-	console.log(basket)
+	//console.log(quantities)
 
 	useEffect(()=>{
 		let tempTotal = 0
@@ -39,26 +37,30 @@ export default function Order(){
 				quantity : quantities[basket[i].FoodName]
 			}
 		}
+
+		console.log(basket)
 		
 
 	}, [quantities])
 
 	function incQuantity(event){
 		console.log(event.target.parentNode.id)
-
 		const idName = event.target.parentNode.id
-		quantities[idName]++
-
-		console.log(quantities)
+		
+		basket[idName].quantity++
+		
+		console.log(basket[idName])
 	}
 
 	function decQuantity(event){
 		console.log(event.target.parentNode.id)
 
 		const idName = event.target.parentNode.id
-		quantities[idName] > 1 ? quantities[idName]-- : quantities[idName] = 0
+		//quantities[idName] > 1 ? quantities[idName]-- : quantities[idName] = 0
+		basket[idName].quantity--
+		console.log(basket[idName])
 
-		console.log(quantities)
+		//console.log(quantities)
 	}
 
 	function quantChange(event){
@@ -72,6 +74,7 @@ export default function Order(){
 			quantities[idName]: changeValue
 		}
 		*/
+
 		let newQuant = quantities
 		newQuant[idName] = changeValue
 		
@@ -85,7 +88,7 @@ export default function Order(){
 		<div className="order-cart">
 			
 			<div className="cart-items">
-				{basket.map(b => {
+				{basket.map((b, index) => {
 					
 					return(<div className="cart-item">
 						 <div>
@@ -93,7 +96,7 @@ export default function Order(){
 							<p>${b.FoodPrice} {b.TimeTakes}Min</p>
 						 </div>
 						
-						<div id={b.FoodName} className="rightie-cart-item">
+						<div id={index} className="rightie-cart-item">
 							<button onClick={decQuantity}>{"-"}</button>
 
 							<p>{ b.quantity }</p>

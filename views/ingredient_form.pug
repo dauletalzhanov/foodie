@@ -1,0 +1,29 @@
+extend layout
+
+block content
+	h1= title
+
+	form(method="POST")
+		div 
+			label Ingredient Name
+			input(type="text", name="ingredient_name") 
+
+		div
+			label Purchase Date
+			input(type="date", name="purchase_date")
+
+		div
+			label Expiration Date
+			input(type="date", name="expiry")
+
+		div
+			label Cost
+			input(type="number", name="cost" step=0.01)
+
+		div
+			label Supplier
+			select(name="supplier")
+				each supplier of allSupplier
+					option(value=`${supplier._id}`) #{supplier.SupplierName} 
+
+		button(type="submit") Submit
