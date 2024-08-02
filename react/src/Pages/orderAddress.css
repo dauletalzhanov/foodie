@@ -1,0 +1,54 @@
+.orAdd {
+	display: flex;
+	justify-content: center;
+	width: 50vw;
+
+	margin: 2vw auto;
+
+	background-color: #eeeeee;
+}
+
+.orAdd > div {
+	background-color: white;
+}
+
+hr {
+	margin: 0 3.3vw;
+}
+
+.orAdd-leftie {
+	width: 17vw;
+	height: 28vw;
+}
+
+.orAdd-leftie > fieldset {
+	border: 1px solid black;
+}
+
+.orAdd-rightie > fieldset {
+	width: 30vw;
+	height: 27vw;
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+
+	border: none;
+
+	border-radius: 16px;
+}
+
+.orAdd-rightie > fieldset > input {
+	width: 26vw;
+	height: 2.3vw;
+
+	border-radius: 16px;
+	border: 1px solid #888888;
+
+	padding: 0 0.8vw;
+}
+
+.orAdd-address {
+	display: flex;
+	flex-direction: column;
+}

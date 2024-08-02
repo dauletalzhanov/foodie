@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Home from './Pages/Home';
 import Shop from './Pages/Shop';
 import Order from './Pages/Order';
+import OrderAddress from './Pages/OrderAddress';
+import NoPage from './Pages/NoPage';
 
 // Router
 import {
@@ -15,7 +17,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-    
+    errorElement: <NoPage />,
   },
   {
     path: "/shop",
@@ -23,7 +25,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/order",
-    element: <Order />
+    element: <Order />,
+  },
+  {
+    path: "/order/address",
+    element: <OrderAddress />
   }
 ])
 

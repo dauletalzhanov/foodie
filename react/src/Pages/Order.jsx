@@ -2,7 +2,7 @@
 import "./order.css"
 
 import React from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 
 import OrderHeader from "../OrderHeader"
@@ -16,6 +16,8 @@ export default function Order(){
 	const [ basket, setBasket ] = useState([...location.state["basket"]])
 	const [ quantities, setQuantities ] = useState({...location.state["quantities"]})
 	const [ total, setTotal ] = useState(0)
+
+	const navigate = useNavigate()
 
 	//console.log(basket)
 	//console.log(quantities)
@@ -83,6 +85,10 @@ export default function Order(){
 		console.log(quantities)
 	}
 
+	function proceedButton(event){
+		navigate("/order/address", { state: { key: "value" } })
+	}
+
 	return(<>
 		<OrderHeader />
 		<div className="order-cart">
@@ -99,8 +105,7 @@ export default function Order(){
 						<div id={index} className="rightie-cart-item">
 							<button onClick={decQuantity}>{"-"}</button>
 
-							<p>{ b.quantity }</p>
-							<input type="number" onChange={quantChange} value={quantities[b.FoodName]} />
+							<input type="number" onChange={quantChange} value={b.quantity} />
 
 							<button onClick={incQuantity}>{"+"}</button>
 						</div>
@@ -124,6 +129,8 @@ export default function Order(){
 				</div>
 			</div>
 		</div>
+
+		<button className="proceed-button" onClick={proceedButton}>Proceed</button>
 
 		<Helmet>
 			<title>Foodie - Order Page - Cart</title>
