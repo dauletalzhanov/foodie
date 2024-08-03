@@ -3,9 +3,7 @@
 	justify-content: center;
 	width: 50vw;
 
-	margin: 2vw auto;
-
-	background-color: #eeeeee;
+	margin: 0 auto;
 }
 
 .orAdd > div {
@@ -19,10 +17,31 @@ hr {
 .orAdd-leftie {
 	width: 17vw;
 	height: 28vw;
+
+	-webkit-box-shadow: 0px 0px 22px -6px #ebebeb;
+	-moz-box-shadow: 0px 0px 22px -6px #ebebeb;
+	box-shadow: 0px 0px 22px -6px #ebebeb;
+
+	border: 1px solid #eee;
+	border-radius: 16px;
 }
 
 .orAdd-leftie > fieldset {
 	border: 1px solid black;
+	border: none;
+
+	display: flex;
+	flex-direction: column;
+	gap: 0.5vw;
+}
+
+.orAdd-leftie > fieldset > div {
+	display: flex;
+	gap: 0.5vw;
+}
+
+.orAdd-leftie > fieldset:nth-child(n-1){
+	margin-bottom: 1.7vw;
 }
 
 .orAdd-rightie > fieldset {
@@ -34,7 +53,6 @@ hr {
 	align-items: center;
 
 	border: none;
-
 	border-radius: 16px;
 }
 

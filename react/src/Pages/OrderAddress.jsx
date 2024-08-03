@@ -9,17 +9,14 @@ import OrderHeader from "../OrderHeader"
 
 export default function OrderAddress(){
 
-	return(<>
-		<h1>Order Address</h1>
-		
-		<OrderHeader />
+	return(<>		
+		<OrderHeader id="1" />
 
 		<div className="orAdd">
 			<div className="orAdd-leftie">
-			<fieldset>
-				<legend>Choose Delivery Type</legend>
-
-				<div>
+				<fieldset>
+					<legend>Choose Delivery Type</legend>
+			
 					<div>
 						<input type="radio" name="order-type" id="order-delivery" checked/>
 						<label htmlFor="order-delivery">Delivery</label>
@@ -29,37 +26,38 @@ export default function OrderAddress(){
 						<input type="radio" name="order-type" id="order-pickup" />
 						<label htmlFor="order-pickup">Pickup</label>
 					</div>
-					
-				</div>
-			</fieldset>
 
-			<fieldset>
-				<legend>Time of Delivery</legend>
+				</fieldset>
 
-				<div>
-					<input type="radio" name="order-time" id="order-delivery" checked/>
-					<label htmlFor="order-time-now">Now</label>					
-				</div>
+				<fieldset>
+					<legend>Time of Delivery</legend>
 
-				<div>
-					<input type="radio" name="order-time" id="order-time-specific" />
-					<label htmlFor="order-time-specific">Specific Time</label>
-				</div>
-			</fieldset>
+					<div>
+						<input type="radio" name="order-time" id="order-delivery" checked/>
+						<label htmlFor="order-time-now">Now</label>					
+					</div>
 
-			<fieldset>
-				<legend>Choose Payment</legend>
+					<div>
+						<input type="radio" name="order-time" id="order-time-specific" />
+						<label htmlFor="order-time-specific">Specific Time</label>
+					</div>
 
-				<div>
-					<input type="radio" name="order-payment-type" id="order-payment-card" checked/>
-					<label htmlFor="order-payment-card">Card</label>
-				</div>
+				</fieldset>
 
-				<div>	
-					<input type="radio" name="order-payment-type" id="order-payment-cash" />
-					<label htmlFor="order-payment-cash">Cash</label>
-				</div>
-			</fieldset>
+				<fieldset>
+					<legend>Choose Payment</legend>
+
+					<div>
+						<input type="radio" name="order-payment-type" id="order-payment-card" checked/>
+						<label htmlFor="order-payment-card">Card</label>
+					</div>
+
+					<div>	
+						<input type="radio" name="order-payment-type" id="order-payment-cash" />
+						<label htmlFor="order-payment-cash">Cash</label>
+					</div>
+
+				</fieldset>
 
 			</div>
 
@@ -78,7 +76,6 @@ export default function OrderAddress(){
 				</fieldset>
 			</div>
 		</div>
-		
 		
 		<Helmet>
 			<meta name="description" content="Address Page for the Order" />

@@ -67,7 +67,7 @@ export default function Shop(){
 	}
 
 	function orderItems(){
-		navigate("/order")
+		navigate("/order", { state: { basket, quantities } })
 	}
 
 	return(<>
@@ -92,11 +92,10 @@ export default function Shop(){
 			<div className="leftie">
 				<p>Total - ${balance}</p>
 
-				<Link to="/order">List of Items</Link>
+				<Link to="/order" state={{ basket, quantities }}>List of Items</Link>
 			</div>
 
 			<button className="order-button" onClick={orderItems}>Proceed to Order</button>
-			<Link to="/order" state={{ basket, quantities }}>List of Items</Link>
 
 		</div>
 

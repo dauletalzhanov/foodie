@@ -1,5 +1,13 @@
+import { useEffect } from "react"
 
-export default function OrderHeader(){
+export default function OrderHeader({ id }){
+	useEffect(()=>{
+		const node = document.querySelector(".order-header")
+		const noddette = node.children
+		
+		noddette[id].style.backgroundColor = "darkslateblue"
+		noddette[id].style.color = "white"
+	}, [])
 
 	return(<>
 		<div className="order-header">

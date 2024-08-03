@@ -90,7 +90,7 @@ export default function Order(){
 	}
 
 	return(<>
-		<OrderHeader />
+		<OrderHeader id="0"/>
 		<div className="order-cart">
 			
 			<div className="cart-items">
@@ -128,6 +128,7 @@ export default function Order(){
 					</div>
 				</div>
 			</div>
+			
 		</div>
 
 		<button className="proceed-button" onClick={proceedButton}>Proceed</button>
