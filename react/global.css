@@ -1,0 +1,35 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.order-header {
+	display: flex;
+	justify-content: space-around;
+	width: 50vw;
+
+	margin: auto;
+
+
+	border-bottom: 1px solid black;
+	margin-bottom: 1vw;
+}
+
+.order-header > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 10vw;
+	height: 5vw;
+
+	border: 1px solid #aaaaaa;
+	border-radius: 16px;
+
+	text-align: center;
+	margin: 1vw 0;
+
+	font-size: 1vw;
+
+	background-color: white;
+}

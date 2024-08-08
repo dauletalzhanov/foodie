@@ -6,6 +6,7 @@ import Shop from './Pages/Shop';
 import Order from './Pages/Order';
 import OrderAddress from './Pages/OrderAddress';
 import NoPage from './Pages/NoPage';
+import Faberge from './Pages/Faberge';
 
 // Router
 import {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/order/address",
     element: <OrderAddress />
+  },
+  {
+    path: "/order/trophy_wife",
+    element: <Faberge />
   }
 ])
 
