@@ -13,7 +13,6 @@ router.get("/", async function(req, res, next){
 		title: "Suppliers", 
 		allSuppliers
 	 })
-
 })
 
 // creating a supplier
@@ -36,5 +35,25 @@ router.post("/create", async function(req, res, next){
 
 	res.redirect("/supplier")
 })
+
+
+// deleting a supplier
+router.get("/delete/:id", async function(req, res, next){
+	const id = req.params.id
+	const supplier = await Supplier.findById(id)
+
+	res.render("supplier_delete", {
+		title: `Delete - ${supplier.SupplierName}`,
+		supplier
+	})
+})
+
+router.post(`/delete/:id`, async function(req, res, next){
+	const id = req.params.id
+	const supplier = await Supplier.findById(id)
+
+	res.redirect("/order/")
+})
+
 
 module.exports = router;
