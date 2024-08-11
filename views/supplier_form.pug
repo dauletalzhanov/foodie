@@ -8,15 +8,16 @@ block content
 	form(method="POST")
 		.supplier_name 
 			label(for="supplier_name") Supplier Name
-			input(type="text", name="supplier name")
+			input(type="text", name="supplier name" value=supplier?supplier.SupplierName:"")
 		
 		.ingredients 
 			label Ingredients 
-			textarea(name="ingredients") 
+			//textarea(name="ingredients" value=supplier?supplier.IngredientsAvailable:"") 
+			textarea(name="ingredients")= supplier ? supplier.IngredientsAvailable : ""
 		
 		.phone_number 
 			label Phone Number 
-			input(type="text" name="phone number")
+			input(type="text" name="phone number" value=supplier?supplier.SupplierPhone:"")
 
 
 		button(type="submit") Submit!

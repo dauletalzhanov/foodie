@@ -6,6 +6,6 @@ block content
 	div 
 		h2 Are you sure you want to delete #{supplier.SupplierName}?
 
-		a(href="http://supplier") No
-		br
-		a(href="http://") Yes
+	form(method="POST")
+		a(href="http://localhost:3000/supplier") No
+		button(type="submit") Yes

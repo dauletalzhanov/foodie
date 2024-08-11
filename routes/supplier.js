@@ -50,10 +50,39 @@ router.get("/delete/:id", async function(req, res, next){
 
 router.post(`/delete/:id`, async function(req, res, next){
 	const id = req.params.id
-	const supplier = await Supplier.findById(id)
-
-	res.redirect("/order/")
+	const supplier = await Supplier.findByIdAndDelete(id)
+	
+	res.redirect("/supplier/")
 })
 
+// updating a supplier
+router.get("/update/:id", async function(req, res, next){
+	const id = req.params.id
+	const supplier = await Supplier.findById(id)
+
+
+	res.render("supplier_form", {
+		title: "Updating",
+		supplier
+	})
+})
+
+router.post("/update/:id", async function(req, res, next){
+	const id = req.params.id
+	const body = req.body
+
+	const updatedSupplier = {
+		SupplierName: body["supplier name"],
+		IngredientsAvailable: body["ingredients"].split(","),
+		SupplierPhone: body["phone number"]
+	}
+
+	const supplier = await Supplier.findByIdAndUpdate(id, updatedSupplier)
+
+	console.log(supplier)
+
+
+	res.redirect("/supplier/")
+})
 
 module.exports = router;
