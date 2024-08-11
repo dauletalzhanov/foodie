@@ -45,4 +45,54 @@ router.post("/create", async function(req, res, next){
   res.redirect("/ingredient")
 })
 
+// delete
+router.get("/delete/:id", async function(req, res, next){
+  const id = req.params.id
+  const ingred = await Ingredient.findById(id)
+
+  res.render("ingredient_delete", { title: `Delete Ingredient: ${ingred.IngredientName}` })
+})
+
+router.post("/delete/:id", async function(req, res, next){
+  const id = req.params.id
+  await Ingredient.findByIdAndDelete(id)
+
+  res.redirect("/ingredient/")
+})
+
+// update
+router.get("/update/:id", async function(req, res, next){
+  const id = req.params.id
+  const ingred = await Ingredient.findById(id)
+  const allSupplier = await Supplier.find({})
+
+  console.log(ingred)
+
+  res.render("ingredient_form", {
+    title: `Update Ingredient: ${ ingred.IngredientName }`,
+    ingred,
+    allSupplier
+  })
+})
+
+router.post("/update/:id", async function(req, res, next){
+  const id = req.params.id
+  const body = req.body
+
+  const newIngred = {
+    IngredientName: body["ingredient_name"],
+    PurchaseDate:   new Date(body["purchase_date"]),
+    Expiry:         new Date(body["expiry"]),
+    Cost:           body["cost"],
+    SupplierID:     body["supplier"]
+  }
+
+
+  console.log(body)
+
+  await Ingredient.findByIdAndUpdate(id, newIngred)
+
+  res.redirect("/ingredient/")
+})
+
 module.exports = router;

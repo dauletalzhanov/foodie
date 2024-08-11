@@ -7,3 +7,8 @@ block content
 
 	each ingredient of allIngredients 
 		p= ingredient
+		br
+		a(href=`/ingredient/delete/${ingredient._id}`) Delete
+		a(href=`/ingredient/update/${ingredient._id}`) Update
+		
+		

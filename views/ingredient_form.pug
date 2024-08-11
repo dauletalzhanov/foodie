@@ -6,24 +6,28 @@ block content
 	form(method="POST")
 		div 
 			label Ingredient Name
-			input(type="text", name="ingredient_name") 
+			input(type="text", name="ingredient_name", value=ingred?ingred.IngredientName:"") 
 
 		div
 			label Purchase Date
-			input(type="date", name="purchase_date")
+			- const purch = ingred ? new Date(ingred.PurchaseDate).toISOString().substring(0, 10):""
+			input(type="date", name="purchase_date" value=purch)
 
 		div
 			label Expiration Date
-			input(type="date", name="expiry")
+
+			- const exp = ingred ? new Date(ingred.Expiry).toISOString().substring(0, 10):""
+			input(type="date", name="expiry" value=exp)
 
 		div
 			label Cost
-			input(type="number", name="cost" step=0.01)
+			input(type="number", name="cost" step=0.01, value=ingred?ingred.Cost:"")
 
 		div
 			label Supplier
 			select(name="supplier")
 				each supplier of allSupplier
-					option(value=`${supplier._id}`) #{supplier.SupplierName} 
+					- const selectedOrNot = ingred.SupplierID == supplier._id ? "selected" : ""
+					option(value=`${supplier._id}` selected=(ingred.SupplierID._id == supplier._id)) #{supplier.SupplierName} 
 
 		button(type="submit") Submit
