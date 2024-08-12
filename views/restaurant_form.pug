@@ -7,23 +7,30 @@ block content
 		form(method="POST")
 			.restaurant_name
 				label Restaurant Name
-				input(type="text", name="restaurant_name")
+				- const resName=restaurant?restaurant.RestaurantName:""
+				input(type="text", name="restaurant_name" value=resName)
 			
 			.menu
 				select(name="menu") 
 					option(value="none") select menu
 					each menu in allMenu
-						option(value=`${menu._id}`) #{menu.MenuName}
+						- const menu_ID = menu.id
+						- const rest_ID = restaurant.MenuID
+						option(value=`${menu._id}` selected=restaurant&&rest_ID==menu_ID) #{menu.MenuName}
 			
 			.supplier
 				select(name="supplier")
 					option(value="none") select supplier 
 					each supplier of allSuppliers
-						option(value=`${supplier._id}` ) #{supplier.SupplierName}
+						- const rest_SL = `${restaurant.SupplierList[0]}`
+						- const supp_ID = supplier._id
+
+						option(value=`${supplier._id}` selected=restaurant&&rest_SL==supp_ID) #{supplier.SupplierName}
 
 			.address
 				label Address
-				input(type="text", name="address")
+				- const resAdd=restaurant?restaurant.Address:""
+				input(type="text", name="address" value=resAdd)
 			
 			.button
 				button(type="submit") Submit! 

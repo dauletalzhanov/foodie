@@ -59,4 +59,35 @@ router.get("/:restaurant_id/food", async function(req, res, next){
 	res.send(menu.FoodAvailable)
 })
 
+/////////////////////////////////////////
+// update restaurant
+router.get("/update/:id", async function(req, res, next){
+	const id = req.params.id
+	const restaurant = await Restaurant.findById(id)
+	
+	const allMenu = await Menu.find({})
+	const allSuppliers = await Supplier.find({})
+
+	console.log(restaurant)
+
+	res.render("restaurant_form", {
+		title: `Update Restaurant: ${restaurant.RestaurantName}`,
+		restaurant,
+		
+		allMenu,
+		allSuppliers
+	})
+})
+
+//
+router.post("/update/:id", async function(req, res, next){
+	const id = req.params.id
+	const restaurant = await Restaurant.findById(id)
+	
+	const allMenu = await Menu.find({})
+	const allSuppliers = await Supplier.find({})
+
+	res.redirect("/restaurant/")
+})
+
 module.exports = router;
