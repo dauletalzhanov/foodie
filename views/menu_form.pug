@@ -9,18 +9,18 @@ block content
 	form(method="POST")
 		div
 			label Brand Name
-			input(type="text", name="menu_name") 
+			input(type="text", name="menu_name" value=menu?menu.MenuName:"") 
 
 		div
 			div.foods
 
 			div.allFoods
-				label Add Food
-				input(type="checkbox", name="") 
+				h3 Add Food
 			
 			each food of allFood 
 				div
+					- const isChecked = menu?menu.FoodAvailable.includes(food._id):false
 					label #{food.FoodName}
-					input(type="checkbox", name=`${food._id}`)
+					input(type="checkbox", value=food._id, name="food_items" checked=isChecked)
 		
 		button(type="submit") Submit

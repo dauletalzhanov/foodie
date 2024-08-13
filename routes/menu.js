@@ -5,7 +5,11 @@ const Menu = require("../models/Menu")
 const Food = require("../models/Food")
 
 /* GET home page. */
-router.get('/', async function(req, res, next) {
+router.get("/", async function(req, res, next){
+	res.redirect("/menu/all")
+})
+
+router.get('/add', async function(req, res, next) {
 	const allFood = await Food.find({})
 
   res.render('menu_form', { 
@@ -15,7 +19,7 @@ router.get('/', async function(req, res, next) {
 });
 
 
-router.post("/", async function(req, res, next){
+router.post("/add", async function(req, res, next){
 	const content = req.body
 
 	let foods = []
@@ -48,6 +52,36 @@ router.post("/all", async function(req, res, next){
 	await Menu.findByIdAndDelete(menu_id)
 
 	res.redirect("/menu/all")
+})
+
+// update
+router.get("/update/:id", async function(req, res, next){
+	const id = req.params.id
+	const menu = await Menu.findById(id)
+	const allFood = await Food.find({})
+
+	res.render("menu_form", {
+		title: `Update Menu: ${ menu.MenuName }`,
+		menu,
+		allFood
+	})
+})
+
+router.post("/update/:id", async function(req, res, next){
+	const id = req.params.id
+
+	const body = req.body
+
+	console.log(body)
+	
+	const content = {
+		MenuName: body["menu_name"],
+		FoodAvailable: [...body["food_items"]]
+	}
+
+	await Menu.findByIdAndUpdate(id, content)
+
+	res.redirect("/menu/")
 })
 
 module.exports = router;
