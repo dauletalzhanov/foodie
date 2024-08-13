@@ -6,25 +6,31 @@ block content
 	form(method="POST") 
 		div
 			label Food Name
-			input(type="text", name="food_name")
+			input(type="text", name="food_name" value=food?food.FoodName:"")
 
 		div.ingredients 
 			label Ingredients
 			each ingredient of allIngredient 
-				p= ingredient
+				div
+					- const checking = food ? food.IngredientsAvailable.includes(ingredient._id):false
+					input(type="checkbox", name="ingredient_list", 
+						id=ingredient._id value=ingredient._id
+						checked=checking)
+					label(for=ingredient._id) #{ingredient.IngredientName}
 
 		div
 			select(name="is_limited")
+				- const limited = food?food.isLimited:""
 				option(value="false") Is this a limited edition
-				option(value="true") Yes 
-				option(value="false") No
+				option(value="true" selected=food&&limited) Yes 
+				option(value="false" selected=food&&!limited) No
 
 		div
 			label Food Price
-			input(type="number", step=0.01, name=`food_price`)
+			input(type="number", step=0.01, name=`food_price` value=food?food.FoodPrice:"")
 		
 		div
 			label Time Takes 
-			input(type="number", min=1, name="time_takes")
+			input(type="number", min=1, name="time_takes" value=food?food.TimeTakes:"")
 		
 		button(type="submit") Submit

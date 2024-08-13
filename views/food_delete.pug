@@ -1,0 +1,11 @@
+extends layout 
+
+block content
+	h1= title
+
+	form(method="POST")
+		h3 Are you sure you want to #{title}
+		
+		a(href="/food/") No 
+		br
+		button(type="submit") Yes

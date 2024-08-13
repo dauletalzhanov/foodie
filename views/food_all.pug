@@ -3,5 +3,11 @@ extend layout
 block content
 	h1= title
 
+	a(href="/food/add") add food
+	br 
 	each food of foods 
 		p= food
+
+		a(href=`/food/delete/${food._id}`) Delete  
+		a(href=`/food/update/${food._id}`) Update  
+		
