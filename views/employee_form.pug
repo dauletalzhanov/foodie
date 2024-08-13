@@ -6,18 +6,28 @@ block content
 	form(method="POST" style="display: flex; flex-direction:column; gap: 2vh;")
 		.name 
 			label(for="employee_name") Employee Name
-			input(type="text", name="employee_name")
+			input(type="text", name="employee_name" value=worker?worker.EmployeeName:"")
 		
 		.restaurant 
 			label Select a Restaurant
 			select(name="restaurant")
-				//option(value="") Select a Restaurant
+				option(value="") Select a Restaurant
 				each restaurant of allRestaurant 
-					option(value=`${restaurant._id}`) #{restaurant.Address}  
+					- const rest_ID = `${restaurant._id}`
+					- const work_ID = worker?`${worker.RestaurantID}`:""
+					option(value=`${restaurant._id}` selected=worker&&rest_ID==work_ID) #{restaurant.RestaurantName}  
 		
 		.manager 
 			label Manager 
-			input(type="text" name="manager")
+			//input(type="text" name="manager")
+			select(name="manager")
+				option(value="" ) None
+				each employee of Employees 
+					- const empl_ID = `${employee._id}`
+					- const work_ID = worker?`${worker.Manager}`:""
+
+					if (worker && `${worker._id}`!==empl_ID)
+						option(value=employee._id selected=worker&&empl_ID==work_ID) #{employee.EmployeeName}  
 
 
 		button(type="submit" style="width:10vw; height:2vw") Submit!

@@ -3,6 +3,12 @@ extends layout.pug
 block content 
 	h1= title
 
+	a(href="/employee/add") Add Employee 
+
 	div
 		each employee in allEmployees 
-			p #{employee.EmployeeName} #{employee.Manager}, #{employee.Restaurant}
+			//p #{employee.EmployeeName} #{employee.Manager}, #{employee.Restaurant}
+			p= employee
+			a(href=`/employee/delete/${employee._id}`) delete 
+			br
+			a(href=`/employee/update/${employee._id}`) update 

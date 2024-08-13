@@ -82,11 +82,19 @@ router.get("/update/:id", async function(req, res, next){
 //
 router.post("/update/:id", async function(req, res, next){
 	const id = req.params.id
-	const restaurant = await Restaurant.findById(id)
-	
-	const allMenu = await Menu.find({})
-	const allSuppliers = await Supplier.find({})
+	const body = req.body
 
+	console.log(body)
+
+	const content = {
+		RestaurantName: body["restaurant_name"],
+		MenuID: body["menu"],
+		Address: body["address"],
+		SupplierList: [body["supplier"]]
+	}
+
+	const restaurant = await Restaurant.findByIdAndUpdate(id, content)
+	
 	res.redirect("/restaurant/")
 })
 

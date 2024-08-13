@@ -1,0 +1,12 @@
+extends layout
+
+block content
+	//h1= title
+
+
+	form(method="POST")
+		h1 Are you sure you want to #{ title }
+		
+		a(href="/employee/") No
+		br
+		button(type="submit") Yes 
