@@ -22,11 +22,12 @@ router.get('/add', async function(req, res, next) {
 router.post("/add", async function(req, res, next){
 	const content = req.body
 
+
+	console.log(content)
+
 	let foods = []
-	for(let key in content){
-		if(key !== "menu_name")
-			foods.push(key)
-	}
+	
+	foods = content["food_items"]
 
 	const newMenu = new Menu({
 		MenuName: content["menu_name"],

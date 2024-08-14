@@ -8,7 +8,11 @@ const OrderSchema = new Schema({
 	RestaurantID: { type: Schema.Types.ObjectId, ref: "Restaurant" },
 	TotalTime: { type: Number },
 	Billing: { type: Number },
-	OrderDatetime: { type: Date }
+	OrderDatetime: { type: Date, required: true }
+})
+
+OrderSchema.virtual("details").get(function(){
+	return `${this.Billing} @${this.OrderDatetime} located at ${this.RestaurantID}`
 })
 
 module.exports = mongoose.model("Order", OrderSchema)

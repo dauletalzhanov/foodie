@@ -3,6 +3,13 @@ extends layout.pug
 block content 
 	h1= title
 
+	a(href="/customer/add")  add
+
 	div
 		each customer in allCustomers 
-			p #{customer}
+			p= customer
+			
+			a(href=`/customer/delete/${customer._id}`) delete
+			br
+			a(href=`/customer/update/${customer._id}`) update
+			

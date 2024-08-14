@@ -5,6 +5,7 @@ const Schema = mongoose.Schema
 
 const CustomerSchema = new Schema({
 	OrderID: { type: mongoose.Types.ObjectId, ref: "Order" },
+	CustomerName: { type: String },
 	CustomerType: { type: String, enum: [ "Guest", "Online" ] },
 	CustomerEmail: { type: String }
 })

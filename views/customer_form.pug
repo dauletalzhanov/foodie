@@ -6,11 +6,19 @@ block content
 	form(method="POST")
 		.name 
 			label(for="customer_name") Customer Name
-			input(type="text", name="customer_name")
+			input(type="text", name="customer_name" value=customer?customer.CustomerName:"")
 		
 		.email
 			label Email 
-			input(type="text", name="customer_email")
+			input(type="text", name="customer_email", value=customer?customer.CustomerEmail:"")
+
+		.type
+			select(name="customer_type")
+				- const checkIfGuest  = customer&&customer.CustomerType=="Guest"
+				- const checkIfOnline = customer&&customer.CustomerType=="Online"
+				
+				option(value="Guest" selected=checkIfGuest) Guest
+				option(value="Online" selected=checkIfOnline) Online 
 
 
 		button(type="submit") Submit!
