@@ -5,6 +5,7 @@ import Home from './Pages/Home';
 import Shop from './Pages/Shop';
 import Order from './Pages/Order';
 import OrderAddress from './Pages/OrderAddress';
+import OrderPayment from './Pages/OrderPayment'
 import NoPage from './Pages/NoPage';
 import Faberge from './Pages/Faberge';
 
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/order/address",
     element: <OrderAddress />
+  },
+  {
+    path: "/order/payment",
+    element: <OrderPayment />
   },
   {
     path: "/order/trophy_wife",

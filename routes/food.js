@@ -22,7 +22,7 @@ router.post("/add", async function(req, res, next){
 	const content = req.body
 	
 	const newFood = new Food({
-		FoodName: content["food_name"],
+		FoodName:  content["food_name"],
 		isLimited: content["is_limited"],
 		FoodPrice: content["food_price"],
 		TimeTakes: content["time_takes"],
@@ -40,7 +40,7 @@ router.get("/all", async function(req, res, next){
 	res.render("food_all", { title: "All Food", foods })
 })
 
-//////				DELETE
+//////	DELETE
 router.get("/delete/:id", async function(req, res, next){
 	const id = req.params.id
 	const food = await Food.findById(id)

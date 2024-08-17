@@ -22,6 +22,7 @@ router.post("/", async function(req, res, next){
 	res.redirect("/restaurant/")
 })
 
+///////// ADDDDDDDDDD
 router.get('/add', async function(req, res, next) {
 	const allSuppliers = await Supplier.find({})
 	const allMenu = await Menu.find({})
