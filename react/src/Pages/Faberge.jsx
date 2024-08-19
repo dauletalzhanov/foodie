@@ -2,7 +2,7 @@ import OrderHeader from "../OrderHeader"
 
 import { Helmet } from "react-helmet"
 
-import "./Faberge.css"
+//import "./Faberge.css"
 
 import egg from "../../public/egg.svg"
 
@@ -26,6 +26,9 @@ export default function Faberge(){
 			<title>IT'S PIZZA TIME!</title>
 			<meta name="description" content="" />
 			<meta name="keywords" content="" />
+
+			<link href="../public/Faberge.css" rel="stylesheet"/>
+		
 		</Helmet>
 	</>)
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
 import { Link, useNavigate } from "react-router-dom"
 
-import "./shop.css"
+//import "./shop.css"
 
 export default function Shop(){
 	const [menu, setMenu] = useState([])
@@ -104,6 +104,8 @@ export default function Shop(){
 			<title>Foodie - Shopping</title>
 			<meta name="description" content="Food Catalogue" />
 			<meta name="keywords" content={menu.map((food)=> food["FoodName"])} />
+
+			<link rel="stylesheet" href="../public/shop.css" />
 		</Helmet>
 	</>)
 }

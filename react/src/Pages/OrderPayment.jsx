@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import OrderHeader from "../OrderHeader"
 import { Helmet } from "react-helmet"
 
-import "./orderPayment.css"
+//import "./orderPayment.css"
 
 export default function OrderAddress(){
 	useEffect(()=>{
@@ -108,6 +108,8 @@ export default function OrderAddress(){
 
 		<Helmet>
 			<title>Order Payment</title>
+
+			<link rel="stylesheet" href="../public/orderPayment.css" />
 		</Helmet>
 	</>)
 }

@@ -1,5 +1,5 @@
 
-import "./orderAddress.css"
+//import "./orderAddress.css"
 
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
@@ -81,6 +81,8 @@ export default function OrderAddress(){
 			<meta name="description" content="Address Page for the Order" />
 			<meta name="keywords" content="Home, Foodie" />
 			<title>Order - Address</title>
+
+			<link rel="stylesheet" href="../public/OrderAddress.css" />
 		</Helmet>
 	</>)
 }

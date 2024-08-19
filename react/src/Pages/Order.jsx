@@ -1,5 +1,5 @@
 
-import "./order.css"
+//import "./order.css"
 
 import React from "react"
 import { useLocation, useNavigate } from "react-router-dom"
@@ -137,6 +137,8 @@ export default function Order(){
 			<title>Foodie - Order Page - Cart</title>
 			<meta name="description" content="Order Page - Cart" />
 			<meta name="keywords" content={ basket.map(b => b.FoodName) } />
+
+			<link rel="stylesheet" href="../public/order.css" />
 		</Helmet>	
 	</>)
 }
