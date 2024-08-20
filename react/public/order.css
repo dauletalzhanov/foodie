@@ -1,4 +1,3 @@
-
 .order-cart {
 	display: grid;
 	grid-template-columns: 45vw 25vw;	
@@ -124,10 +123,20 @@
 	width: 16.8vw;
 	height: 3.3vw;
 
-	margin: 0 auto;
+	margin: 2vw 40vw;
 	
 	border-radius: 16px;
 	border: 1px solid #a7a7a7;
+}
+
+.proceed-button:hover {
+	background-color: #978fce;
+	color: white;
+}
+
+.proceed-button:active {
+	background-color: #7b6ae7;
+	color: white;
 }
 
 /***************************************/

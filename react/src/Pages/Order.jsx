@@ -25,7 +25,7 @@ export default function Order(){
 	useEffect(()=>{
 		let tempTotal = 0
 		for(let i=0; i<basket.length; i++){
-			tempTotal += basket[i].FoodPrice * quantities[basket[i].FoodName]
+			tempTotal += basket[i].FoodPrice * quantities[ basket[i].FoodName ]
 
 			console.log(tempTotal)
 		}
@@ -36,12 +36,11 @@ export default function Order(){
 		for(let i=0; i<basket.length; i++){
 			basket[i] = {
 				...basket[i],
-				quantity : quantities[basket[i].FoodName]
+				quantity : quantities[ basket[i].FoodName ]
 			}
 		}
 
 		console.log(basket)
-		
 
 	}, [quantities])
 
@@ -70,13 +69,6 @@ export default function Order(){
 		const idName = event.target.parentNode.id
 		const changeValue = event.target.value
 
-		/*
-			let newQuant = {
-			...quantities,
-			quantities[idName]: changeValue
-		}
-		*/
-
 		let newQuant = quantities
 		newQuant[idName] = changeValue
 		
@@ -86,32 +78,37 @@ export default function Order(){
 	}
 
 	function proceedButton(event){
-		navigate("/order/address", { state: { key: "value" } })
+		navigate("/order/address", { state: { basket, total } })
+	}
+
+	function formPass(formData){
+		navigate("/order/address", { state: { basket, total } })
 	}
 
 	return(<>
 		<OrderHeader id="0"/>
-		<div className="order-cart">
+
+		<form className="order-cart" action={formPass} >
 			
 			<div className="cart-items">
 				{basket.map((b, index) => {
 					
 					return(<div className="cart-item">
 						 <div>
-							<p>{b.FoodName}</p>
-							<p>${b.FoodPrice} {b.TimeTakes}Min</p>
+							<p>{ b.FoodName }</p>
+							<p>${ b.FoodPrice } { b.TimeTakes } Min</p>
 						 </div>
 						
 						<div id={index} className="rightie-cart-item">
 							<button onClick={decQuantity}>{"-"}</button>
 
-							<input type="number" onChange={quantChange} value={b.quantity} />
+							<input type="number" onChange={quantChange} value={ b.quantity } />
 
-							<button onClick={incQuantity}>{"+"}</button>
+							<button onClick={ incQuantity }>{"+"}</button>
 						</div>
 					</div>)
 				})}
-			</div>
+		</div>
 
 			<div>
 				<div className="cart-sidebar">
@@ -129,7 +126,7 @@ export default function Order(){
 				</div>
 			</div>
 			
-		</div>
+		</form>
 
 		<button className="proceed-button" onClick={proceedButton}>Proceed</button>
 
@@ -137,7 +134,6 @@ export default function Order(){
 			<title>Foodie - Order Page - Cart</title>
 			<meta name="description" content="Order Page - Cart" />
 			<meta name="keywords" content={ basket.map(b => b.FoodName) } />
-
 			<link rel="stylesheet" href="../public/order.css" />
 		</Helmet>	
 	</>)
