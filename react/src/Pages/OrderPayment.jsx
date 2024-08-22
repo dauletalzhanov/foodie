@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 import OrderHeader from "../OrderHeader"
 import { Helmet } from "react-helmet"
@@ -9,6 +9,8 @@ import { useLocation, useNavigate } from "react-router-dom"
 export default function OrderAddress(){
 	const location = useLocation()
 	const navigate = useNavigate()
+
+	const [paymentData, setPayment] = useState({})
 
 	useEffect(()=>{
 		
@@ -43,8 +45,18 @@ export default function OrderAddress(){
 		const formData = new FormData(event.target)
 
 		const data = {
-
+			"payment_type": formData.get("payment_type"),
+			"name_card": formData.get("name_on_card"),
+			"card_number": formData.get("card_number"),
+			"start_date": formData.get("start_date"),
+			"end_date": formData.get("end_date"),
+			"cvc_number": formData.get("cvc_number"),
+			"card_address": {}
 		}
+
+		setPayment(data)
+
+		navigate("/order/trophy")
 
 	}
 
@@ -143,34 +155,32 @@ export default function OrderAddress(){
 
 				<div id="addresses" > 
 					<div>
-						<label htmlFor="">Address 1</label>
-						<input type="text" name="" id="" />
+						<label htmlFor="address">Address 1</label>
+						<input type="text" name="address" id="address" />
 					</div>
 
 					<div>
-						<label htmlFor="">Address 2</label>
-						<input type="text" name="" id=""  />
+						<label htmlFor="address2">Address 2</label>
+						<input type="text" name="address2" id="address2"  />
 					</div>
 
 					<div>
-						<label htmlFor="">Address 3</label>
-						<input type="text" name="" id="" />
+						<label htmlFor="address3">Address 3</label>
+						<input type="text" name="address3" id="address3" />
 					</div>
 				</div>
 				
 
 			</div>
-		</div>
+			</div>
 			
-			<button type="submit" className="submit-payment" >Submit!</button>
+			<button type="submit" className="submit-payment" > Submit! </button>
 		</form>
 
 		<Helmet>
 			<title>Order Payment</title>
 			<meta name="description" content="" />
 			<meta name="keywords" content="" />
-			
-
 			<link rel="stylesheet" href="../public/orderPayment.css" />
 		</Helmet>
 	</>)

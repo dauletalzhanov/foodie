@@ -15,14 +15,14 @@ block content
 					option(value="none") select menu
 					each menu in allMenu
 						- const menu_ID = menu.id
-						- const rest_ID = restaurant.MenuID
+						- const rest_ID = restaurant?restaurant.MenuID:""
 						option(value=`${menu._id}` selected=restaurant&&rest_ID==menu_ID) #{menu.MenuName}
 			
 			.supplier
 				select(name="supplier" required)
 					option(value="none") select supplier 
 					each supplier of allSuppliers
-						- const rest_AR = restaurant.SupplierList[0]
+						- const rest_AR = restaurant?restaurant.SupplierList[0]:""
 						- const rest_SL = `${rest_AR}`
 						- const supp_ID = `${supplier._id}`
 						- const checkIfChecked = restaurant&&rest_SL==supp_ID

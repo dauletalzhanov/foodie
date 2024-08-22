@@ -65,7 +65,7 @@ export default function OrderAddress(){
 						<legend>Time of Delivery</legend>
 
 						<div>
-							<input type="radio" name="order-time" id="order-time-now" value="now"  checked/>
+							<input type="radio" name="order-time" id="order-time-now" value="now" checked />
 							<label htmlFor="order-time-now">Now</label>					
 						</div>
 
@@ -80,7 +80,7 @@ export default function OrderAddress(){
 						<legend>Choose Payment</legend>
 
 						<div>
-							<input type="radio" name="order-payment-type" id="order-payment-card" value="card" checked/>
+							<input type="radio" name="order-payment-type" id="order-payment-card" value="card" checked />
 							<label htmlFor="order-payment-card">Card</label>
 						</div>
 

@@ -38,7 +38,7 @@ const router = createBrowserRouter([
     element: <OrderPayment />
   },
   {
-    path: "/order/trophy_wife",
+    path: "/order/trophy",
     element: <Faberge />
   }
 ])

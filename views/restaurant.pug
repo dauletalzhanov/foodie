@@ -15,7 +15,7 @@ block content
 				button(type="submit") Delete Restaurant
 
 			br
-			a(href=`/order/restaurant=${restaurant._id}`) order from #{restaurant.RestaurantName}
+			a(href=`/order/${restaurant._id}/`) orders from #{restaurant.RestaurantName}
 			
 			br
 			a(href=`/restaurant/update/${restaurant._id}`) Update

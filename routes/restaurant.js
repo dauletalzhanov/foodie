@@ -22,7 +22,7 @@ router.post("/", async function(req, res, next){
 	res.redirect("/restaurant/")
 })
 
-///////// ADDDDDDDDDD
+// ADD
 router.get('/add', async function(req, res, next) {
 	const allSuppliers = await Supplier.find({})
 	const allMenu = await Menu.find({})
@@ -60,7 +60,6 @@ router.get("/:restaurant_id/food", async function(req, res, next){
 	res.send(menu.FoodAvailable)
 })
 
-/////////////////////////////////////////
 // update restaurant
 router.get("/update/:id", async function(req, res, next){
 	const id = req.params.id

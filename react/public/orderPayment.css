@@ -100,3 +100,10 @@ h3 {
 	display: flex;
 	flex-direction: column;
 }
+
+/****************************/
+button {
+	width: 9vw;
+
+	margin: 0 auto;
+}
