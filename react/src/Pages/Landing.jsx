@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet"
 
 // footer
-import Apple from "../../public/app-store.svg"
-import PlayStore from "../../public/play-store.svg"
+import Apple 			from "../../public/app-store.svg"
+import PlayStore 	from "../../public/play-store.svg"
 
 // shops
 import yellow from 	"../../public/cafe_uno.svg"
@@ -15,11 +15,60 @@ import mongo 		from 		"../../public/mongo.svg"
 import react 		from  	"../../public/react.svg"
 import express 	from  	"../../public/express.svg"
 
+// services
+import menu 				from "../../public/menu.svg"
+import orders 			from "../../public/calculator.svg"
+import transactions from "../../public/shipping.svg"
+import services 		from "../../public/cashier.svg"
+
+
 export default function Landing(){
 	
 	return(<>
-
 		<div>
+			<div className="services">
+				<div>
+					<div className="square" >
+						<img src={menu} alt="menu" />
+
+					</div>
+					<h3>1. Browse Menu</h3>
+					<div className="descrip">
+						<p>Browse menu from curated list of selections</p>
+					</div>
+				</div>
+
+				<div>
+					<div className="square" >
+						<img src={orders} alt="orders" />
+					</div>
+					<h3>2. Manage Orders</h3>
+					<div className="descrip">
+						<p>Browse menu from curated list of selections</p>
+					</div>
+				</div>
+
+				<div>
+					<div className="square" >
+						<img src={transactions} alt="transactions" />
+					</div>
+					<h3>3. Transactions</h3>
+					<div className="descrip">
+						<p>Browse menu from curated list of selections</p>
+					</div>
+				</div>
+
+				<div>
+					<div className="square" >
+						<img src={services} alt="services" />
+					</div>
+					<h3>4. Provide Services</h3>
+					<div className="descrip">
+						<p>Browse menu from curated list of selections</p>
+					</div>
+				</div>
+			</div>
+
 			<div className="powered">
 
 				<h2>Powered By</h2>
@@ -100,7 +149,7 @@ export default function Landing(){
 					<div className="toppie">
 						<div className="profile-picture" >
 						</div>
-						<h4>Sayed Malek</h4>						
+						<h4>Sayed Malik</h4>						
 					</div>
 
 					<div className="bottom"> 
@@ -118,7 +167,7 @@ export default function Landing(){
 						<div className="profile-picture" >
 							
 						</div>
-						<h4>Rami Malek</h4>						
+						<h4>Ronald McDonald</h4>						
 					</div>
 
 					<div className="bottom"> 

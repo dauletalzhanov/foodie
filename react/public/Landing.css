@@ -2,19 +2,49 @@ footer {
 	background-color: #000000;
 	color: white;
 }
+
 /************************/
+.services {
+	display: flex;
+	justify-content: center;
+	gap: 2vw;
+
+	margin: 2vw 0;
+}
+
+.square {
+	width: 10vw;
+	height: 10vw;
+	border-radius: 16px;
+	background-color: #dadada;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.square > img {
+	width: 7vw;
+	height: 7vw;
+}
+
+.descrip {
+	width: 12vw;
+}
+
+/************************/
+
 .testimonials {
 	display: grid;
 	grid-template-columns: repeat(3, 20vw);
-	justify-content: space-around;
-	gap: 3vw;
+	justify-content: center;
+	gap: 5vw;
 }
 
 .testimonials > div {
 	display: flex;
 	flex-direction: column;
 	width: 21vw;
-
 }
 
 .testimonial {
