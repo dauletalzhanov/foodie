@@ -8,6 +8,7 @@ import OrderAddress from './Pages/OrderAddress';
 import OrderPayment from './Pages/OrderPayment'
 import NoPage from './Pages/NoPage';
 import Faberge from './Pages/Faberge';
+import Landing from './Pages/Landing';
 
 // Router
 import {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/order/trophy",
     element: <Faberge />
+  }, 
+  {
+    path: "/landing",
+    element: <Landing />
   }
 ])
 

@@ -57,9 +57,6 @@ router.post('/:restaurant/add', async function(req, res, next) {
   const menu = await Menu.findById(restaurant.MenuID).populate("FoodAvailable")
   const foodAvail = menu.FoodAvailable
   
-  //console.log(foodAvail)
-  //console.log(req.body)
-
   const body = req.body
 
   let billing = 0
@@ -80,7 +77,6 @@ router.post('/:restaurant/add', async function(req, res, next) {
     }
 
   }
-
 
   const data = {
     RestaurantID: id,

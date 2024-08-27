@@ -9,3 +9,9 @@ block content
 	ul
 		each order of orders
 			li= order
+
+			a(href=`/order/${restaurant._id}/delete`) delete
+			br
+			a(href=`/order/${restaurant._id}/update`) update
+
+			hr
