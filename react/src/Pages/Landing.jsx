@@ -4,16 +4,135 @@ import { Helmet } from "react-helmet"
 import Apple from "../../public/app-store.svg"
 import PlayStore from "../../public/play-store.svg"
 
+// shops
 import yellow from 	"../../public/cafe_uno.svg"
 import green 	from  "../../public/cafe_dos.svg"
 import blue 	from  "../../public/cafe_tres.svg"
 import red 		from  "../../public/cafe_quatro.svg"
+
+// powered by
+import mongo 		from 		"../../public/mongo.svg"
+import react 		from  	"../../public/react.svg"
+import express 	from  	"../../public/express.svg"
 
 export default function Landing(){
 	
 	return(<>
 
 		<div>
+			<div className="powered">
+
+				<h2>Powered By</h2>
+
+				<div>
+					<div>
+						<img src={ mongo } alt="mongo-db-logo" />
+						<p>MongoDB</p>
+					</div>
+
+					<div>
+						<img src={ react } alt="react-logo" />
+						<p>React</p>
+					</div>
+
+					<div>
+						<img src={ express } alt="express-logo" />
+						<p>Express</p>
+					</div>
+				</div>
+			</div>
+
+			<div className="testimonials">
+				<div className="testimonial">
+					<div className="toppie">
+						<div className="profile-picture" >
+							
+						</div>
+						<h4>Alex Morgan</h4>						
+					</div>
+
+					<div className="bottom"> 
+						<p>
+							Lorem Ipsumles simplemente el texto de relleno de las imprentas y archivos de texto. 
+							Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
+							cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una 
+							galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+						</p>
+					</div>
+				</div>
+
+				<div className="testimonial">
+					<div className="toppie">
+						<div className="profile-picture" >
+						</div>
+						<h4>Jorgan Schelanski</h4>						
+					</div>
+
+					<div className="bottom"> 
+						<p>
+							Lorem Ipsumles simplemente el texto de relleno de las imprentas y archivos de texto. 
+							Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
+							cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una 
+							galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+						</p>
+					</div>
+				</div>
+
+				<div className="testimonial">
+					<div className="toppie">
+						<div className="profile-picture" >
+							
+						</div>
+						<h4>Schnell Morgan</h4>						
+					</div>
+
+					<div className="bottom"> 
+						<p>
+							Lorem Ipsumles simplemente el texto de relleno de las imprentas y archivos de texto. 
+							Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
+							cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una 
+							galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+						</p>
+					</div>
+				</div>
+
+				<div className="testimonial">
+					<div className="toppie">
+						<div className="profile-picture" >
+						</div>
+						<h4>Sayed Malek</h4>						
+					</div>
+
+					<div className="bottom"> 
+						<p>
+							Lorem Ipsumles simplemente el texto de relleno de las imprentas y archivos de texto. 
+							Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
+							cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una 
+							galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+						</p>
+					</div>
+				</div>
+
+				<div className="testimonial">
+					<div className="toppie">
+						<div className="profile-picture" >
+							
+						</div>
+						<h4>Rami Malek</h4>						
+					</div>
+
+					<div className="bottom"> 
+						<p>
+							Lorem Ipsumles simplemente el texto de relleno de las imprentas y archivos de texto. 
+							Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, 
+							cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una 
+							galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+						</p>
+					</div>
+				</div>
+
+			</div>
+
 			<div className="mozaic" >
 				<div>
 					<img src={yellow} alt="" />

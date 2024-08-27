@@ -3,6 +3,75 @@ footer {
 	color: white;
 }
 /************************/
+.testimonials {
+	display: grid;
+	grid-template-columns: repeat(3, 20vw);
+	justify-content: space-around;
+	gap: 3vw;
+}
+
+.testimonials > div {
+	display: flex;
+	flex-direction: column;
+	width: 21vw;
+
+}
+
+.testimonial {
+	width: 20vw;
+	height: 11.5vw;
+	font-size: 0.8vw;
+
+	padding: 1vw;
+	
+	border-radius: 16px;
+
+	background-color: black;
+	color: white;
+}
+
+.toppie {
+	display: flex;
+	align-items: center;
+	gap: 1vw;
+}
+
+.toppie h4 {
+	margin: 0;
+	font-size: 1vw;
+}
+
+.profile-picture {
+	border-radius: 50%;
+	width: 3vw;
+	height: 3vw;
+
+	background-color: #bebebe;
+}
+
+
+/************************/
+.powered {
+	text-align: center;
+}
+
+.powered > div {
+	display: flex;
+	justify-content: center;
+	gap: 5vw;
+}
+
+.powered > div > div {
+	border-radius: 36px;
+	padding: 4vw;
+}
+
+.powered img {
+	width: 10vw;
+	height: 10vw;
+}
+
+/************************/
 .mozaic {
 	display: flex;
 	justify-content: space-between;
@@ -12,12 +81,15 @@ footer {
 }
 
 .mozaic > div {
-	border: 1px solid #afafaf;
 	border-radius: 32px;
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	-webkit-box-shadow: 0px 0px 16px 2px rgba(194,194,194,0.5);
+	-moz-box-shadow: 0px 0px 16px 2px rgba(194,194,194,0.5);
+	box-shadow: 0px 0px 16px 2px rgba(194,194,194,0.5);
 }
 
 .mozaic > div:nth-child(1){
