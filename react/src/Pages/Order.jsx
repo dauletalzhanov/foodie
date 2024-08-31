@@ -19,9 +19,6 @@ export default function Order(){
 
 	const navigate = useNavigate()
 
-	//console.log(basket)
-	//console.log(quantities)
-
 	useEffect(()=>{
 		let tempTotal = 0
 		for(let i=0; i<basket.length; i++){
@@ -45,21 +42,25 @@ export default function Order(){
 	}, [quantities])
 
 	function incQuantity(event){
-		console.log(event.target.parentNode.id)
+		//console.log(event.target.parentNode.id)
 		const idName = event.target.parentNode.id
+		const name = basket[idName].FoodName
+		const value = quantities[name] + 1
+		quantities[basket[idName].FoodName]++
 		
-		basket[idName].quantity++
+		setQuantities(q =>  ({...q, name : value}))
 		
-		console.log(basket[idName])
+		//console.log(quantities)
 	}
 
 	function decQuantity(event){
 		console.log(event.target.parentNode.id)
-
 		const idName = event.target.parentNode.id
-		//quantities[idName] > 1 ? quantities[idName]-- : quantities[idName] = 0
-		basket[idName].quantity--
-		console.log(basket[idName])
+		const name = basket[idName].FoodName
+		const value = quantities[name] - 1
+
+		quantities[name] > 1 ? quantities[name]-- : quantities[name] = 0		
+		setQuantities(q =>  ({...q, name : value}))
 
 		//console.log(quantities)
 	}
@@ -88,7 +89,7 @@ export default function Order(){
 	return(<>
 		<OrderHeader id="0"/>
 
-		<form className="order-cart" action={formPass} >
+		<form className="order-cart" action={ formPass } >
 			
 			<div className="cart-items">
 				{basket.map((b, index) => {
@@ -100,11 +101,9 @@ export default function Order(){
 						 </div>
 						
 						<div id={index} className="rightie-cart-item">
-							<button onClick={decQuantity}>{"-"}</button>
-
-							<input type="number" onChange={quantChange} value={ b.quantity } />
-
-							<button onClick={ incQuantity }>{"+"}</button>
+							<button type="button" onClick={ decQuantity }>{"-"}</button>
+							<p>{ quantities[ b.FoodName ] }</p>
+							<button type="button" onClick={ incQuantity }>{"+"}</button>
 						</div>
 					</div>)
 				})}
