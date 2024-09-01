@@ -83,4 +83,24 @@ router.post('/delete/:id', async function(req, res, next) {
   res.redirect("/customer/")
 });
 
+
+// REST API
+// registering
+router.post("/register/", async function(req, res, next){
+	//console.log(req.body)
+	const content = req.body.body
+	const ifExists = await Customer.find({ CustomerEmail: content["email"] })
+	if(ifExists.length > 0)
+		return res.json({ error: "User Exists" })
+	
+	const customer = new Customer({
+		CustomerName: 	content["name"],
+		CustomerEmail: 	content["email"],
+		CustomerType:		"Online"
+	})
+	await customer.save()
+
+	res.json({ id: customer._id })
+})
+
 module.exports = router;

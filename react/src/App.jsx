@@ -9,6 +9,10 @@ import OrderPayment from './Pages/OrderPayment'
 import NoPage from './Pages/NoPage';
 import Faberge from './Pages/Faberge';
 import Landing from './Pages/Landing';
+import Signin from './Pages/Signin';
+import Signout from './Pages/Signout';
+import Signup from './Pages/Signup';
+import Profile from './Pages/Profile';
 
 // Router
 import {
@@ -21,6 +25,18 @@ const router = createBrowserRouter([
     path: "/",
     element: <Home />,
     errorElement: <NoPage />,
+  },
+  {
+    path: "/signin",
+    element: <Signin />
+  },
+  {
+    path: "/signout",
+    element: <Signout />
+  },
+  {
+    path: "/signup",
+    element: <Signup />
   },
   {
     path: "/shop",
@@ -45,6 +61,10 @@ const router = createBrowserRouter([
   {
     path: "/landing",
     element: <Landing />
+  },
+  {
+    path: "/profile/:id",
+    element: <Profile />
   }
 ])
 

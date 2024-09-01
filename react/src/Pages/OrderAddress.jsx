@@ -7,7 +7,6 @@ import OrderHeader from "../OrderHeader"
 export default function OrderAddress(){
 	const navigate = useNavigate()
 	const location = useLocation()
-	//const { initBasket } = location.state
 	
 	const [ basket, setBasket ] = useState([...location.state["basket"]])
 	const [ total, setTotal ] = useState( location.state["total"] )
