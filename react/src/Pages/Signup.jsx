@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Helmet } from "react-helmet"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { useCookies } from 'react-cookie'
 import bcrypt from "bcryptjs"
 
@@ -130,6 +130,12 @@ export default function Signup(){
 
 			<button type="submit">Register</button>
 		</form>
+
+		<p>
+			Already have an account? 
+			<Link to="/signin"> Log In </Link> 
+		</p>
+		
 
 		{Object.keys(errors).map(err => {
 			return(<>
