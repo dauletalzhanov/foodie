@@ -91,7 +91,7 @@ router.post("/register/", async function(req, res, next){
 	const content = req.body.body
 	const ifExists = await Customer.find({ 
 		$or: [
-			{ CustomerEmail: content["email"] },
+			{ CustomerEmail: 		content["email"] 		},
 			{ CustomerUsername: content["username"] }
 		]
 	})
@@ -106,7 +106,7 @@ router.post("/register/", async function(req, res, next){
 		CustomerPassword: content["password"],
 		CustomerType:			"Online"
 	})
-	
+
 	await customer.save()
 
 	const passData = {

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { CookiesProvider } from 'react-cookie';
 
 // Pages
 import Home from './Pages/Home';
@@ -70,7 +70,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (<>
-    <RouterProvider router={router} />
+    <CookiesProvider>
+      <RouterProvider router={router} />
+    </CookiesProvider>
   </>)
 }
 

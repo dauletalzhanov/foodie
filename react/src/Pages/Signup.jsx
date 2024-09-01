@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { Helmet } from "react-helmet"
 import { useNavigate } from "react-router-dom"
+import { useCookies } from 'react-cookie'
 import bcrypt from "bcryptjs"
 
 export default function Signup(){
 	const [errors, setErrors] = useState({})
+	const [cookies, setCookie] = useCookies(['identifier']);
 
 	const navigate = useNavigate()
 
@@ -59,19 +61,22 @@ export default function Signup(){
 		return hash
 	}
 
+	function cookieChange(newCookie){
+		setCookie("identifier", newCookie)
+	}
+
 	async function submit(event){
 		event.preventDefault()
 
 		const formData = new FormData(event.target)
 
 		const hash = await passwordHandle(formData)
-
 		if(hash == "Mismatch")
 			return
 
 		const data = {
-			"name":  formData.get("name"),
-			"email": formData.get("email"),
+			"name":  		formData.get("name"),
+			"email": 		formData.get("email"),
 			"username": formData.get("username"),
 			"password": hash
 		}
@@ -85,13 +90,13 @@ export default function Signup(){
 				...e, 
 				"USER ERROR" : result["error"]
 			}) )
-
-			console.log(errors)
 		} else {
-			const id = result["CustomerUsername"]
-			navigate(`/profile/${id}/`)
-		}
+			const username = 	result["CustomerUsername"]
+			const id = 				result["_id"]
 			
+			cookieChange(id)
+			navigate( `/profile/${username}/` )
+		}
 	}
 
 	return(<>
@@ -110,7 +115,7 @@ export default function Signup(){
 
 			<div>
 				<label htmlFor="username">Username</label>
-				<input type="text" name="username" id="username" />
+				<input type="text" name="username" id="username" pattern="^[a-zA-Z0-9]+$" />
 			</div>
 
 			<div>
@@ -119,7 +124,7 @@ export default function Signup(){
 			</div>
 
 			<div>
-				<label htmlFor="password2">Confirm Password</label>
+				<label htmlFor="password2" >Confirm Password</label>
 				<input type="password" name="password2" id="password2" />
 			</div>
 
@@ -128,12 +133,14 @@ export default function Signup(){
 
 		{Object.keys(errors).map(err => {
 			return(<>
-				<p>{errors[err]}</p>
+				<p>{ errors[err] }</p>
 			</>)
 		})}
 		
 		<Helmet>
 			<title>Sign Up - Foodie</title>
+			<meta name="description" content="" />
+			<meta name="keywords" content="" />
 		</Helmet>
 	</>)
 }
