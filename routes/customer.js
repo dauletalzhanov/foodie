@@ -89,18 +89,31 @@ router.post('/delete/:id', async function(req, res, next) {
 router.post("/register/", async function(req, res, next){
 	//console.log(req.body)
 	const content = req.body.body
-	const ifExists = await Customer.find({ CustomerEmail: content["email"] })
+	const ifExists = await Customer.find({ 
+		$or: [
+			{ CustomerEmail: content["email"] },
+			{ CustomerUsername: content["username"] }
+		]
+	})
+
 	if(ifExists.length > 0)
 		return res.json({ error: "User Exists" })
 	
 	const customer = new Customer({
-		CustomerName: 	content["name"],
-		CustomerEmail: 	content["email"],
-		CustomerType:		"Online"
+		CustomerName: 		content["name"],
+		CustomerEmail: 		content["email"],
+		CustomerUsername: content["username"],
+		CustomerPassword: content["password"],
+		CustomerType:			"Online"
 	})
+	
 	await customer.save()
 
-	res.json({ id: customer._id })
+	const passData = {
+		...customer._doc
+	}
+
+	res.json({ ...passData })
 })
 
 module.exports = router;

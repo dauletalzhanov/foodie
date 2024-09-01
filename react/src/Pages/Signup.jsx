@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { Helmet } from "react-helmet"
 import { useNavigate } from "react-router-dom"
+import bcrypt from "bcryptjs"
 
 export default function Signup(){
-	const [errors, setErrors] = useState([])
+	const [errors, setErrors] = useState({})
 
 	const navigate = useNavigate()
 
@@ -27,28 +28,68 @@ export default function Signup(){
 				return response.json()
 		})
 
-		//console.log(result)
 		return result
+	}
+
+	async function passwordHandle(formData){
+
+		console.log(formData)
+
+		const password = formData.get("password")
+		const password2 = formData.get("password2")
+		
+		if( password !== password2 ){
+			setErrors(e => ({
+				...e, 
+				"Mismatch" : "Passwords Do Not Match"
+			}) )
+
+			return "Mismatch"
+		} else {
+			setErrors(e => {
+				const newErr = { ...e }
+				delete newErr.Mismatch
+				return newErr
+			})
+		}
+
+		const salt = await bcrypt.genSalt(10)
+		const hash = await bcrypt.hash(password, salt)
+
+		return hash
 	}
 
 	async function submit(event){
 		event.preventDefault()
 
 		const formData = new FormData(event.target)
+
+		const hash = await passwordHandle(formData)
+
+		if(hash == "Mismatch")
+			return
+
 		const data = {
 			"name":  formData.get("name"),
-			"email": formData.get("email")
+			"email": formData.get("email"),
+			"username": formData.get("username"),
+			"password": hash
 		}
 
 		const result = await register("New User", data)
-
-		console.log(result)
+		
+		console.log(data)
 
 		if(result["error"]){
-			console.log("error")
+			setErrors(e => ({
+				...e, 
+				"USER ERROR" : result["error"]
+			}) )
+
+			console.log(errors)
 		} else {
-			const id = result["id"]
-			navigate(`/profile/${id}`)
+			const id = result["CustomerUsername"]
+			navigate(`/profile/${id}/`)
 		}
 			
 	}
@@ -67,12 +108,27 @@ export default function Signup(){
 				<input type="email" name="email" id="email" />
 			</div>
 
+			<div>
+				<label htmlFor="username">Username</label>
+				<input type="text" name="username" id="username" />
+			</div>
+
+			<div>
+				<label htmlFor="password">Password</label>
+				<input type="password" name="password" id="password" />
+			</div>
+
+			<div>
+				<label htmlFor="password2">Confirm Password</label>
+				<input type="password" name="password2" id="password2" />
+			</div>
+
 			<button type="submit">Register</button>
 		</form>
 
-		{errors.map(err => {
+		{Object.keys(errors).map(err => {
 			return(<>
-				<p>{err}</p>
+				<p>{errors[err]}</p>
 			</>)
 		})}
 		
