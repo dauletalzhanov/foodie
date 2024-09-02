@@ -1,0 +1,11 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+form > div {
+	display: flex;
+	flex-direction: column;
+
+	width: 20vw;
+}

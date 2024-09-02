@@ -68,6 +68,7 @@ export default function Signin(){
 		
 		<Helmet>
 			<title>Log In</title>
+			<link rel="stylesheet" href="../Public/signin.css" />
 		</Helmet>
 	</>)
 }

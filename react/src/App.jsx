@@ -13,12 +13,15 @@ import Signin from './Pages/Signin';
 import Signout from './Pages/Signout';
 import Signup from './Pages/Signup';
 import Profile from './Pages/Profile';
+import Settings from './Pages/Settings';
+
 
 // Router
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
 
 const router = createBrowserRouter([
   {
@@ -65,7 +68,11 @@ const router = createBrowserRouter([
   {
     path: "/profile/:id",
     element: <Profile />
-  }
+  },
+  {
+    path: "settings",
+    element: <Settings />
+  },
 ])
 
 function App() {

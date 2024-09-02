@@ -144,4 +144,31 @@ router.post("/login/", async function(req, res, next){
 	res.json({ ...data })
 })
 
+// profile section
+router.post("/profile/", async function(req, res, next){
+	const body = req.body
+
+	console.log(body)
+
+	const customerResults = await Customer.find({ CustomerUsername: body["id"] })
+
+	if(customerResults.length == 0)
+		return res.json({ status: false })
+	
+	const customer = customerResults[0]
+
+	let data = {
+		name: customer["CustomerName"],
+		type: customer["CustomerType"],
+		email: customer["CustomerEmail"],
+		username: customer["CustomerUsername"],
+
+		status: true
+	}
+
+	//console.log(customerResults)
+
+	res.json({ ...data })
+})
+
 module.exports = router;

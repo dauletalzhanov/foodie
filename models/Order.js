@@ -8,7 +8,8 @@ const OrderSchema = new Schema({
 	RestaurantID: { type: Schema.Types.ObjectId, ref: "Restaurant" },
 	TotalTime: { type: Number },
 	Billing: { type: Number },
-	OrderDatetime: { type: Date, required: true }
+	OrderDatetime: { type: Date, required: true },
+	CustomerID: { type: Schema.Types.ObjectId, ref: "Customer" }
 })
 
 OrderSchema.virtual("details").get(function(){
