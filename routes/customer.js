@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const Customer = require("../models/Customer")
+const bcrypt = require("bcryptjs")
 
 router.get('/', function(req, res, next) {
 	res.redirect("/customer/all")
@@ -114,6 +115,33 @@ router.post("/register/", async function(req, res, next){
 	}
 
 	res.json({ ...passData })
+})
+
+// log in
+router.post("/login/", async function(req, res, next){
+	const body = req.body
+
+	console.log(body)
+
+	const customerResults = await Customer.find({ CustomerEmail: body["email"] })
+	let data = {}
+
+	if(customerResults.length){
+		const customer = customerResults[0]
+		const match = await bcrypt.compare( body["password"], customer.CustomerPassword )
+		console.log( customer )
+		
+		data = {
+			status: match,
+			id : 		match ? customer._id : "", 
+			username : match ? customer.CustomerUsername : "" 
+		}
+	} else {
+		data = { status: false }
+	}
+	
+
+	res.json({ ...data })
 })
 
 module.exports = router;
