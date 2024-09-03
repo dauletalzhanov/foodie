@@ -171,4 +171,46 @@ router.post("/profile/", async function(req, res, next){
 	res.json({ ...data })
 })
 
+// profile 
+router.post("/profile/id/", async function(req, res, next){
+	const body = req.body
+	console.log(body)
+	const customer = await Customer.findById( body["id"] )
+
+	//if(customerResults.length == 0)
+	//	return res.json({ status: false })
+	
+	//const customer = customerResults[0]
+
+	let data = {
+		name: customer["CustomerName"],
+		type: customer["CustomerType"],
+		email: customer["CustomerEmail"],
+		username: customer["CustomerUsername"]
+	}
+
+	//console.log(customerResults)
+
+	res.json({ ...data })
+})
+
+router.put("/profile/id/", async function(req, res, next){
+	const body = req.body
+	const id = body["id"]
+	console.log(body)
+
+
+	const content = {
+		CustomerName:  body["name"],
+		CustomerEmail:  body["email"],
+		CustomerUsername: body["username"]
+	}
+
+	const updated = await Customer.findByIdAndUpdate(id, content)
+	console.log(updated)
+
+
+	res.json({ status: true })
+})
+
 module.exports = router;

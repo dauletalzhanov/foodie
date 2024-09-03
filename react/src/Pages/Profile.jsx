@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Helmet } from "react-helmet"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 export default function Profile(){
 	const { id } = useParams()
@@ -15,7 +15,7 @@ export default function Profile(){
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
-				 }
+				}
 			})
 			.then(response => {
 				if(!response.ok)

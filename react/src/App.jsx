@@ -15,7 +15,6 @@ import Signup from './Pages/Signup';
 import Profile from './Pages/Profile';
 import Settings from './Pages/Settings';
 
-
 // Router
 import {
   createBrowserRouter,
@@ -70,9 +69,9 @@ const router = createBrowserRouter([
     element: <Profile />
   },
   {
-    path: "settings",
+    path: "/settings",
     element: <Settings />
-  },
+  }
 ])
 
 function App() {

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { Helmet } from "react-helmet"
 
-import otherStyles from "./shop.css?inline"
+import "./shop.css"
 
 export default function Home(){
 	return(<>
