@@ -34,7 +34,11 @@ export default function Profile(){
 	return(<>	
 		<h1> { id } </h1>
 		<div>
-			<Link to="/settings/">Settings</Link>
+			<Link to="/settings/"> Setting </Link>
+		</div>
+
+		<div>
+			<Link to="/delete/profile"> Delete </Link>
 		</div>
 
 		<Helmet>

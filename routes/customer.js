@@ -194,19 +194,12 @@ router.post("/profile/id/", async function(req, res, next){
 	res.json({ ...data })
 })
 
-router.put("/profile/id/", async function(req, res, next){
+router.delete("/delete/profile/", async function(req, res, next){
 	const body = req.body
 	const id = body["id"]
 	console.log(body)
 
-
-	const content = {
-		CustomerName:  body["name"],
-		CustomerEmail:  body["email"],
-		CustomerUsername: body["username"]
-	}
-
-	const updated = await Customer.findByIdAndUpdate(id, content)
+	const updated = await Customer.findByIdAndDelete(id)
 	console.log(updated)
 
 
