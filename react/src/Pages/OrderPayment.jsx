@@ -4,26 +4,15 @@ import OrderHeader from "../OrderHeader"
 import { Helmet } from "react-helmet"
 import { useLocation, useNavigate } from "react-router-dom"
 
-//import "./orderPayment.css"
-
 export default function OrderAddress(){
 	const location = useLocation()
 	const navigate = useNavigate()
 
 	const [paymentData, setPayment] = useState({})
-	const [ basket, setBasket ] = useState([...location.state["basket"]])
+
+	const [ basket, setBasket ] = useState([ ...location.state["basket"] ])
 	const [ total, setTotal ] = useState( location.state["total"] )
-	const [ addressData, setAddress] = useState({...location.state["addressData"]})
-	
-
-	useEffect(()=>{
-		console.log(basket)
-		console.log(total)
-		console.log(addressData)
-		
-		
-	}, [])
-
+	const [ addressData, setAddress] = useState({ ...location.state["addressData"] })
 
 	function onSameDelivery(event){
 		console.log("same delivery")
@@ -47,37 +36,35 @@ export default function OrderAddress(){
 	}
 
 	function submitting(event){
-
 		event.preventDefault()
-
-		const formData = new FormData(event.target)
+		const formData = new FormData( event.target )
 
 		const data = {
-			"payment_type": formData.get("payment_type"),
-			"name_card": formData.get("name_on_card"),
-			"card_number": formData.get("card_number"),
-			"start_date": formData.get("start_date"),
-			"end_date": formData.get("end_date"),
-			"cvc_number": formData.get("cvc_number"),
+			"payment_type":	 		formData.get("payment_type"),
+			"name_card": 				formData.get("name_on_card"),
+			"card_number": 			formData.get("card_number"),
+			"start_date": 			formData.get("start_date"),
+			"end_date": 				formData.get("end_date"),
+			"cvc_number": 			formData.get("cvc_number"),
 			"delivery_address": formData.get("delivery_address"),
 			"card_address": {
-				"address1": formData.get("address1"),
-				"address2": formData.get("address2"),
-				"address3": formData.get("address3"),
+				"address1": 			formData.get("address1"),
+				"address2": 			formData.get("address2"),
+				"address3": 			formData.get("address3"),
 			}
 		}
 
-		setPayment(p => ({ ...p, ...data}))
-		console.log(paymentData)
+		setPayment(p => ({ ...p, ...data }))
+		console.log( paymentData )
 
 		const bundle = { 
-			basket: [...basket], 
+			basket: [ ...basket ], 
 			address: { ...addressData }, 
 			total: total, 
 			payment: { ...paymentData }  
 		}
 
-		console.log(bundle)
+		//console.log( bundle )
 
 		navigate("/order/trophy", { state: { bundle } })
 
@@ -85,7 +72,7 @@ export default function OrderAddress(){
 
 
 	return(<>
-		<OrderHeader id={"2"}/> 
+		<OrderHeader id={ "2" }/> 
 
 		<form method="POST" className="payment-form" onSubmit={ submitting } >
 			<div>

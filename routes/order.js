@@ -95,4 +95,31 @@ router.post('/:restaurant/add', async function(req, res, next) {
   res.redirect(`/order/${id}/`)
 });
 
+router.post("/create/", async function(req, res, next){
+  const body = req.body
+  const basket = [ ...body["basket"] ]
+  const address = { ...body["address"] }
+  const payment = { ...body["payment"] }
+  const total = body["total"]
+
+  let duration = 0
+  let items = []
+
+  for(let i=0; i<basket.length; i++){
+    items.push( basket[i]._id )
+    duration += basket[i].TimeTakes
+  }
+
+  const data = {
+    //RestaurantID: id,
+    Billing: total,
+    TotalTime: duration,
+    OrderDatetime: new Date(),
+    FoodList: items,
+    CustomerID: body["customerID"]
+  }
+
+  console.log( data )
+})
+
 module.exports = router;
