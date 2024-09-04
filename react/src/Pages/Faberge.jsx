@@ -1,12 +1,34 @@
 import OrderHeader from "../OrderHeader"
-
+import { useLocation, useNavigate } from "react-router-dom"
 import { Helmet } from "react-helmet"
 
-//import "./Faberge.css"
-
 import egg from "../../public/egg.svg"
+import { useEffect } from "react"
 
 export default function Faberge(){
+	const navigate = useNavigate()
+	const location = useLocation()
+	const [ bundle, setBundle ] = useState({ ...location.state["bundle"] })
+
+	useEffect(()=>{
+		async function sendBundle(){
+			const result = await fetch("http://localhost:3000/order/add/", {
+				method: "POST",
+				body: JSON.stringify({ ...bundle }),
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				 }
+			})
+			.then(response => {
+				if(!response.ok)
+					throw new Error("Error")
+				else
+					return response.json()
+			})
+		}
+
+		sendBundle()
+	}, [])
 
 	function email(){
 		console.log("Email Sent!")

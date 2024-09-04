@@ -44,8 +44,6 @@ export default function Signin(){
 	}
 
 	return(<>
-		<h1>Login</h1>
-
 		<form method="POST" onSubmit={ loginForm } >
 			<div>
 				<label htmlFor="email" > Email </label>
@@ -69,6 +67,8 @@ export default function Signin(){
 		<Helmet>
 			<title>Log In</title>
 			<link rel="stylesheet" href="../Public/signin.css" />
+			<meta name="keywords" content="" />
+			<meta name="description" content="" />
 		</Helmet>
 	</>)
 }

@@ -32,11 +32,13 @@ export default function OrderAddress(){
 			"delivery type" : formData.get("order-type"),
 		}
 
-		console.log(data)
+		//console.log(data)
 
-		setAddress(data)
+		setAddress(a => ( {...a, ...data} ))
 
-		navigate("/order/payment", { state: { basket, addressData  } })
+		console.log(basket, total, addressData)
+
+		navigate("/order/payment", { state: { basket, addressData, total  } })
 	}
 
 	return(<>		
@@ -97,11 +99,11 @@ export default function OrderAddress(){
 				<div className="orAdd-rightie">
 					<fieldset className="orAdd-address">
 						<legend>Address Details</legend>
-						<input type="text" placeholder="Name" name="name" required />
-						<input type="text" placeholder="Address" name="address" required />
-						<input type="text" placeholder="Address 2" name="address2" required />
-						<input type="text" placeholder="Telephone" name="telephone" required />
-						<input type="text" placeholder="Email" name="email" required />
+						<input type="text" placeholder="Name" name="name"  />
+						<input type="text" placeholder="Address" name="address"  />
+						<input type="text" placeholder="Address 2" name="address2"  />
+						<input type="text" placeholder="Telephone" name="telephone"  />
+						<input type="text" placeholder="Email" name="email"  />
 						
 					</fieldset>
 				</div>

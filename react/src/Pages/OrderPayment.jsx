@@ -11,8 +11,16 @@ export default function OrderAddress(){
 	const navigate = useNavigate()
 
 	const [paymentData, setPayment] = useState({})
+	const [ basket, setBasket ] = useState([...location.state["basket"]])
+	const [ total, setTotal ] = useState( location.state["total"] )
+	const [ addressData, setAddress] = useState({...location.state["addressData"]})
+	
 
 	useEffect(()=>{
+		console.log(basket)
+		console.log(total)
+		console.log(addressData)
+		
 		
 	}, [])
 
@@ -51,12 +59,27 @@ export default function OrderAddress(){
 			"start_date": formData.get("start_date"),
 			"end_date": formData.get("end_date"),
 			"cvc_number": formData.get("cvc_number"),
-			"card_address": {}
+			"delivery_address": formData.get("delivery_address"),
+			"card_address": {
+				"address1": formData.get("address1"),
+				"address2": formData.get("address2"),
+				"address3": formData.get("address3"),
+			}
 		}
 
-		setPayment(data)
+		setPayment(p => ({ ...p, ...data}))
+		console.log(paymentData)
 
-		navigate("/order/trophy")
+		const bundle = { 
+			basket: [...basket], 
+			address: { ...addressData }, 
+			total: total, 
+			payment: { ...paymentData }  
+		}
+
+		console.log(bundle)
+
+		navigate("/order/trophy", { state: { bundle } })
 
 	}
 
@@ -108,12 +131,12 @@ export default function OrderAddress(){
 
 					<div>
 						<label htmlFor="start_date">Start Date</label>
-						<input type="date" name="start_date" id="start_date" required />
+						<input type="date" name="start_date" id="start_date" />
 					</div>
 					
 					<div>
 						<label htmlFor="end_date">Expiry Date</label>
-						<input type="date" name="end_date" id="end_date" required />
+						<input type="date" name="end_date" id="end_date" />
 					</div>
 
 					<div>
@@ -155,8 +178,8 @@ export default function OrderAddress(){
 
 				<div id="addresses" > 
 					<div>
-						<label htmlFor="address">Address 1</label>
-						<input type="text" name="address" id="address" />
+						<label htmlFor="address1">Address 1</label>
+						<input type="text" name="address1" id="address1" />
 					</div>
 
 					<div>

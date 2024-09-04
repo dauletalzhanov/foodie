@@ -25,7 +25,8 @@ hr {
 }
 
 h3 {
-	margin: 0;
+	margin: 1vw 0;
+
 }
 
 .order-method > div {
@@ -102,8 +103,16 @@ h3 {
 }
 
 /****************************/
+
 button {
 	width: 9vw;
 
 	margin: 0 auto;
+}
+
+/****************************/
+#addresses > div {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1vw;
 }

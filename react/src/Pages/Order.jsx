@@ -1,6 +1,3 @@
-
-//import "./order.css"
-
 import React from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
@@ -79,18 +76,22 @@ export default function Order(){
 	}
 
 	function proceedButton(event){
+		console.log(basket)
 		navigate("/order/address", { state: { basket, total } })
 	}
 
 	function formPass(formData){
-		navigate("/order/address", { state: { basket, total } })
+		event.preventDefault()
+
+		console.log(basket)
+
+		//navigate("/order/address", { state: { basket, total } })
 	}
 
 	return(<>
 		<OrderHeader id="0"/>
 
-		<form className="order-cart" action={ formPass } >
-			
+		<form className="order-cart" onSubmit={ formPass } >
 			<div className="cart-items">
 				{basket.map((b, index) => {
 					
@@ -127,7 +128,7 @@ export default function Order(){
 			
 		</form>
 
-		<button className="proceed-button" onClick={proceedButton}>Proceed</button>
+		<button type="submit" className="proceed-button" onClick={proceedButton} >Proceed</button>
 
 		<Helmet>
 			<title>Foodie - Order Page - Cart</title>

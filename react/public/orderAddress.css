@@ -70,3 +70,18 @@ hr {
 	display: flex;
 	flex-direction: column;
 }
+
+button {
+	width: 16.8vw;
+	height: 3.3vw;
+	margin: 2vw 38vw;
+
+	border: 1px solid #acacac;
+	border-radius: 16px;
+
+	background-color: #d0a7ff;
+}
+
+button:hover {
+	background-color: #ac6fe6;
+}
