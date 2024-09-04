@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
 import { Link, useNavigate } from "react-router-dom"
-
-//import "./shop.css"
+import { useCookies } from 'react-cookie'
 
 export default function Shop(){
 	const [menu, setMenu] = useState([])
 	const [balance, setBalance] = useState(0)
 	const [basket, setBasket] = useState([])
 	const [quantities, setQuantities] = useState({})
+	const [cookies, setCookie] = useCookies(['restaurant']);
 
 	const navigate = useNavigate()
 
-	const menu_id = `66a7c2d8945da678d761f0b8`
+	const restaurant_id = `66a7c2d8945da678d761f0b8`
+	setCookie("restaurant", menu_id)
 
 	useEffect(()=>{
 		async function getFood(restaurant_id){
@@ -30,7 +31,7 @@ export default function Shop(){
 			//console.log(menu)
 		}
 
-		getFood(menu_id)
+		getFood(restaurant_id)
 	}, [menu])
 
 	function addButton(event){

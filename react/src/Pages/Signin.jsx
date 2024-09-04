@@ -4,7 +4,6 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import bcrypt from "bcryptjs"
 
-
 export default function Signin(){
 	const [errors, setErrors] = useState({})
 	const [cookies, setCookie] = useCookies(['identifier']);

@@ -12,13 +12,15 @@ export default function Faberge(){
 	const [ bundle,  setBundle ] = useState({ ...location.state["bundle"] })
 	const [ cookies, setCookie ] = useCookies(['identifier']);
 	
+	/*
 	useEffect(()=>{
 		async function sendBundle(){
 			const result = await fetch("http://localhost:3000/order/create/", {
 				method: "POST",
 				body: JSON.stringify({ 
 					...bundle, 
-					customerID: cookies['identifier'] 
+					customerID: cookies['identifier'],
+					restaurant: cookies["restaurant"]
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -35,9 +37,28 @@ export default function Faberge(){
 		sendBundle()
 
 	}, [])
+	*/
 
-	function email(){
+	async function email(){
 		console.log("Email Sent!")
+
+		const result = await fetch("http://localhost:3000/order/create/", {
+			method: "POST",
+			body: JSON.stringify({ 
+				...bundle, 
+				customerID: cookies['identifier'],
+				restaurant: cookies["restaurant"]
+			}),
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8',
+			}
+		})
+		.then(response => {
+			if(!response.ok)
+				throw new Error("Error")
+			else
+				return response.json()
+		})
 	}
 
 	return(<>
@@ -56,7 +77,7 @@ export default function Faberge(){
 			<meta name="keywords" content="" />
 
 			<link href="../public/Faberge.css" rel="stylesheet"/>
-		
+
 		</Helmet>
 	</>)
 }

@@ -8,17 +8,8 @@ const Menu = require("../models/Menu")
 
 /* GET home page. */
 router.get("/", async function(req, res, next){
-
   res.render("order_all", {
     title: `All Orders`
-  })
-})
-
-router.get("/add", async function(req, res, next){
-  const menu = await Menu.findById(restaurant.MenuID).populate("FoodAvailable")
-  
-  res.render("order_form", {
-    title: "Order Form",
   })
 })
 
@@ -111,15 +102,20 @@ router.post("/create/", async function(req, res, next){
   }
 
   const data = {
-    //RestaurantID: id,
+    RestaurantID: body["restaurant"], //id,
     Billing: total,
     TotalTime: duration,
     OrderDatetime: new Date(),
     FoodList: items,
     CustomerID: body["customerID"]
   }
-
+  
   console.log( data )
+
+  const order = new Order(data)
+  await order.save()
+
+  
 })
 
 module.exports = router;
