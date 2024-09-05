@@ -142,4 +142,23 @@ router.delete("/delete/", async function(req, res, next){
   res.json({})
 })
 
+router.post("/update/", async function(req, res, next){
+  const body = req.body
+  const order = await Order.findById(body["id"]).populate("FoodList")
+
+  console.log(order)
+
+  res.json({ ...order._doc })
+})
+
+router.put("/update/", async function(req, res, next){
+  const change = req.body.order
+
+  console.log(change)
+
+  await Order.findByIdAndUpdate(change._id, change)
+
+  res.json({ status : true })
+})
+
 module.exports = router;

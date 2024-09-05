@@ -12,6 +12,10 @@ block content
 			label Email 
 			input(type="text", name="customer_email", value=customer?customer.CustomerEmail:"")
 
+		.username
+			label Username 
+			input(type="text", name="customer_username", value=customer?customer.CustomerUsername:"")
+
 		.type
 			select(name="customer_type")
 				- const checkIfGuest  = customer&&customer.CustomerType=="Guest"

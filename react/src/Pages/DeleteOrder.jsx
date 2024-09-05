@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom"
 
 export default function DeleteOrder(){
-	const {id} = useParams()
+	const { id } = useParams()
 	const navigate = useNavigate()
 
 	async function goBack(){

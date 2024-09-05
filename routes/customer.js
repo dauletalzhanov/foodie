@@ -58,7 +58,8 @@ router.post('/update/:id', async function(req, res, next) {
 	const content = {
 		CustomerName:  body["customer_name"],
 		CustomerType:  body["customer_type"],
-		CustomerEmail: body["customer_email"]
+		CustomerEmail: body["customer_email"],
+		CustomerUsername: body["customer_username"],
 	}
 
 	await Customer.findByIdAndUpdate(id, content)
