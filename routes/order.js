@@ -120,9 +120,12 @@ router.post("/create/", async function(req, res, next){
 
 router.post("/profile/", async function(req, res, next){
   const body = req.body
-
   console.log(body)
+  
   let customer = await Customer.find({ "CustomerUsername": body["id"] })
+  if(customer.length == 0){
+    return res.json({ status: false })
+  }
   customer = customer[0]
   const allOrders = await Order.find({ "CustomerID": customer._id })
     //.populate("CustomerID")
@@ -131,6 +134,12 @@ router.post("/profile/", async function(req, res, next){
   console.log(allOrders)
 
   res.json([ ...allOrders ])
+})
+
+router.delete("/delete/", async function(req, res, next){
+  const id = req.body["id"]
+  const order = await Order.findByIdAndDelete(id)
+  res.json({})
 })
 
 module.exports = router;

@@ -15,6 +15,8 @@ import Signup from './Pages/Signup';
 import Profile from './Pages/Profile';
 import Settings from './Pages/Settings';
 import DeleteProfile from './Pages/DeleteProfile';
+import DeleteOrder from './Pages/DeleteOrder';
+import UpdateOrder from './Pages/UpdateOrder'
 
 // Router
 import {
@@ -76,6 +78,14 @@ const router = createBrowserRouter([
   {
     path: "/delete/profile",
     element: <DeleteProfile />
+  },
+  {
+    path: "/delete/order/:id",
+    element: <DeleteOrder />
+  },
+  {
+    path: "/update/order/:id",
+    element: <UpdateOrder />
   }
 ])
 

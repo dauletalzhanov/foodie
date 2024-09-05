@@ -61,11 +61,16 @@ export default function Profile(){
 
 	function showFood(event){
 		const torso = event.target.parentNode.parentNode.lastChild
-		if(torso.style.display == "flex")
-			torso.style.display = "none"
-		else 
-			torso.style.display = "flex"
+		const button = event.target
 
+		if(torso.style.display == "flex"){
+			torso.style.display = "none"
+			button.style.backgroundColor = "#a1a1a1"
+		}
+		else {
+			torso.style.display = "flex"
+			button.style.backgroundColor = "pink"
+		}
 	}
 	
 	return(<>	
@@ -101,9 +106,7 @@ export default function Profile(){
 				return(<div key={ index } className="single-order" >
 
 					<div className="face">
-						<div className="triangle" onClick={showFood} >
-
-
+						<div className="triangle" onClick={ showFood } >
 						</div>
 
 						<div>
@@ -111,6 +114,8 @@ export default function Profile(){
 							<p> { orderTime } </p>
 							<p> { day } </p>
 							<p> { time } </p>
+							<p> <Link to={ "/delete/order/" + order._id } > Delete </Link> </p>
+							<p> <Link to={ "/update/order/" + order._id } > Update </Link> </p>
 						</div>
 					</div>
 					
