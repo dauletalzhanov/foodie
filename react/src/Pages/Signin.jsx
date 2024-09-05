@@ -35,7 +35,6 @@ export default function Signin(){
 		})
 
 		setCookie("identifier", result["id"])
-		
 		setErrors({ "error": "Wrong Details" })
 		
 		result["status"] ? navigate(`/profile/${ result["username"] }`) : ""

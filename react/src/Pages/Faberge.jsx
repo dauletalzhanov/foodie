@@ -59,6 +59,8 @@ export default function Faberge(){
 			else
 				return response.json()
 		})
+
+		console.log( result )
 	}
 
 	return(<>

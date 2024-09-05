@@ -5,6 +5,7 @@ const Order = require("../models/Order")
 const Restaurant = require("../models/Restaurant")
 const Food = require("../models/Food")
 const Menu = require("../models/Menu")
+const Customer = require("../models/Customer")
 
 /* GET home page. */
 router.get("/", async function(req, res, next){
@@ -82,13 +83,12 @@ router.post('/:restaurant/add', async function(req, res, next) {
 
   console.log(data)
 
-
   res.redirect(`/order/${id}/`)
 });
 
 router.post("/create/", async function(req, res, next){
   const body = req.body
-  const basket = [ ...body["basket"] ]
+  const basket =  [ ...body["basket"] ]
   const address = { ...body["address"] }
   const payment = { ...body["payment"] }
   const total = body["total"]
@@ -102,12 +102,12 @@ router.post("/create/", async function(req, res, next){
   }
 
   const data = {
-    RestaurantID: body["restaurant"], //id,
+    RestaurantID: body["restaurant"],
     Billing: total,
     TotalTime: duration,
     OrderDatetime: new Date(),
     FoodList: items,
-    CustomerID: body["customerID"]
+    CustomerID: body["customerID"] ? body["customerID"] : "66d8b7a6bceb367cb05169ae" // guest
   }
   
   console.log( data )
@@ -115,7 +115,22 @@ router.post("/create/", async function(req, res, next){
   const order = new Order(data)
   await order.save()
 
-  
+  res.json({ status:true })
+})
+
+router.post("/profile/", async function(req, res, next){
+  const body = req.body
+
+  console.log(body)
+  let customer = await Customer.find({ "CustomerUsername": body["id"] })
+  customer = customer[0]
+  const allOrders = await Order.find({ "CustomerID": customer._id })
+    //.populate("CustomerID")
+    .populate("FoodList")
+
+  console.log(allOrders)
+
+  res.json([ ...allOrders ])
 })
 
 module.exports = router;

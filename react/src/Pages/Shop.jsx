@@ -13,7 +13,7 @@ export default function Shop(){
 	const navigate = useNavigate()
 
 	const restaurant_id = `66a7c2d8945da678d761f0b8`
-	setCookie("restaurant", menu_id)
+	setCookie("restaurant", restaurant_id)
 
 	useEffect(()=>{
 		async function getFood(restaurant_id){
