@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet"
 import { useCookies } from 'react-cookie'
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import bcrypt from "bcryptjs"
 
 export default function Signin(){
@@ -43,6 +43,8 @@ export default function Signin(){
 
 	return(<>
 		<form method="POST" onSubmit={ loginForm } >
+			<h1>Please Sign In</h1>
+
 			<div>
 				<label htmlFor="email" > Email </label>
 				<input type="email" name="email" id="email" required />
@@ -52,6 +54,8 @@ export default function Signin(){
 				<label htmlFor="password" > Password </label>
 				<input type="password" name="password" id="password" required />
 			</div>
+
+			<p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
 
 			<button type="submit" > Submit! </button>
 		</form>

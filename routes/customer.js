@@ -63,7 +63,6 @@ router.post('/update/:id', async function(req, res, next) {
 	}
 
 	await Customer.findByIdAndUpdate(id, content)
-
   res.redirect("/customer/")
 });
 
@@ -167,21 +166,13 @@ router.post("/profile/", async function(req, res, next){
 		status: true
 	}
 
-	//console.log(customerResults)
-
 	res.json({ ...data })
 })
 
-// profile 
+// settings page 
 router.post("/profile/id/", async function(req, res, next){
 	const body = req.body
-	console.log(body)
 	const customer = await Customer.findById( body["id"] )
-
-	//if(customerResults.length == 0)
-	//	return res.json({ status: false })
-	
-	//const customer = customerResults[0]
 
 	let data = {
 		name: customer["CustomerName"],
@@ -190,9 +181,22 @@ router.post("/profile/id/", async function(req, res, next){
 		username: customer["CustomerUsername"]
 	}
 
-	//console.log(customerResults)
-
 	res.json({ ...data })
+})
+
+// update customer
+router.put("/update/profile/", async function(req, res, next){
+	const body = req.body
+	const id = body["id"]
+	const data = {
+		CustomerName: body["name"],
+		CustomerEmail: body["email"],
+		CustomerUsername: body["username"]
+	}
+
+	const customer = await Customer.findByIdAndUpdate(id, data)
+
+	res.json({ ...customer })
 })
 
 router.delete("/delete/profile/", async function(req, res, next){

@@ -60,7 +60,7 @@ export default function Faberge(){
 				return response.json()
 		})
 
-		console.log( result )
+		console.log( bundle )
 	}
 
 	return(<>

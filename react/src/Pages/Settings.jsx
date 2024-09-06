@@ -37,13 +37,7 @@ export default function Settings(){
 					return response.json()
 			})
 
-			//res = json(res)
-			//console.log(res)
-
 			setUser( u => ({...u, ...res}) )
-			//console.log(userData)
-
-			//userData = { ...res }
 		}
 
 		init()
@@ -61,7 +55,7 @@ export default function Settings(){
 			id:	userData["id"]
 		}
 
-		let res = await fetch(`http://localhost:3000/customer/profile/id/`, {
+		let res = await fetch(`http://localhost:3000/customer/update/profile/`, {
 			method: "PUT",
 			body: JSON.stringify({
 				title: "updating personal data",
@@ -78,8 +72,7 @@ export default function Settings(){
 				return response.json()
 		})
 
-		if(res)
-			navigate(`/profile/${userData["username"]}`)
+		navigate(`/profile/${userData["username"]}`)
 
 	}
 

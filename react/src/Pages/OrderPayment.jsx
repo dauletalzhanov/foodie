@@ -63,7 +63,7 @@ export default function OrderAddress(){
 			payment: { ...paymentData }  
 		}
 
-		//console.log( bundle )
+		console.log( bundle )
 
 		navigate("/order/trophy", { state: { bundle } })
 
