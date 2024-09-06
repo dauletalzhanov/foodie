@@ -52,12 +52,18 @@ router.post("/add", async function(req, res, next){
 
 /////////////////////////////////////////////
 router.get("/:restaurant_id/food", async function(req, res, next){
-	const restaurant_id = req.params.restaurant_id
-	const restaurant = await Restaurant.findById(restaurant_id)
+	const id = req.params.restaurant_id
+	const restaurant = await Restaurant.findById( id )
 
-	const menu = await Menu.findById(restaurant.MenuID).populate("FoodAvailable")
+	const menu = await Menu.findById(restaurant.MenuID)
+		.populate({
+			path: "FoodAvailable",
+			populate: {
+				path: "IngredientsAvailable"
+			}
+		})
 
-	res.send(menu.FoodAvailable)
+	res.json(menu.FoodAvailable)
 })
 
 // update restaurant

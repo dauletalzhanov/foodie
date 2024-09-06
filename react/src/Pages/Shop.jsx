@@ -28,11 +28,11 @@ export default function Shop(){
 				})
 
 			setMenu(res)
-			//console.log(menu)
+			console.log(menu)
 		}
 
 		getFood(restaurant_id)
-	}, [menu])
+	}, [])
 
 	function addButton(event){
 		const food = event.target.parentNode.id
@@ -82,9 +82,15 @@ export default function Shop(){
 						<p className="food-description" >
 							${food["FoodPrice"]} - {food["TimeTakes"]}Mins
 						</p>
-						<p><strong>Ingredients: </strong>{food["IngredientsAvailable"].map((i) => i)}</p>
+						<p>
+							<strong>Ingredients: </strong>
+							{ food["IngredientsAvailable"].map((i, index) => {
+									const value = `${i.IngredientName}`+(index != food["IngredientsAvailable"].length-1?", ":"")
+									return(value)
+							})}
+						</p>
 
-						<button onClick={addButton}>ADD</button>
+						<button onClick={addButton} >ADD</button>
 					</div>)
 			})}
 		</div>
