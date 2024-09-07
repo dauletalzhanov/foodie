@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
+import { Helmet } from "react-helmet"
 
 export default function DeleteOrder(){
 	const { id } = useParams()
@@ -38,5 +39,12 @@ export default function DeleteOrder(){
 				<button onClick={deleteOrder} > Yes </button>
 			</div>
 		</div>
+
+		<Helmet>
+			<title>Delete Order</title>
+			<meta name="description" content="" />
+			<meta name="keywords" content="" />
+			<link rel="stylesheet" href="../../public/DeleteProfile.css" />
+		</Helmet>
 	</>)
 }

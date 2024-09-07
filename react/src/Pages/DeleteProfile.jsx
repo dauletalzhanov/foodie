@@ -8,7 +8,7 @@ export default function DeleteProfile(){
 	const [cookies, setCookie] = useCookies(['identifier']);
 
 	async function goBack( event ){
-		navigate(`/profile/`)
+		navigate( -1 )
 	}
 
 	async function deleteAccount( event ) {
@@ -29,8 +29,6 @@ export default function DeleteProfile(){
 				return response.json()
 		})
 
-		
-		
 	}
 
 	return(<>
@@ -38,8 +36,8 @@ export default function DeleteProfile(){
 			<h1>Are you sure you want to delete this account?</h1>
 
 			<div>
-				<button onClick={goBack}>Nope</button>
-				<button onClick={deleteAccount} >Yup</button>
+				<button onClick={goBack} > Nope </button>
+				<button onClick={deleteAccount} > Yup </button>
 			</div>
 		</div>
 
@@ -47,6 +45,7 @@ export default function DeleteProfile(){
 			<title>Delete Profile</title>
 			<meta name="description" content="" />
 			<meta name="keywords" content="" />
+			<link rel="stylesheet" href="../public/DeleteProfile.css" />
 		</Helmet>
 		
 	</>)

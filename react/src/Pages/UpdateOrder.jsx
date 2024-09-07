@@ -104,6 +104,9 @@ export default function UpdateOrder(){
 			<title>Update Order</title>
 			<meta name="description" content="" />
 			<meta name="keywords" content="" />
+
+			<link rel="stylesheet" href="../../public/UpdateOrder.css" />
+
 		</Helmet>	
 	</>)
 }

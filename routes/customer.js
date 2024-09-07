@@ -199,15 +199,13 @@ router.put("/update/profile/", async function(req, res, next){
 	res.json({ ...customer })
 })
 
+// delete customer
 router.delete("/delete/profile/", async function(req, res, next){
 	const body = req.body
 	const id = body["id"]
-	console.log(body)
-
-	const updated = await Customer.findByIdAndDelete(id)
-	console.log(updated)
-
-
+	
+	await Customer.findByIdAndDelete(id)
+	
 	res.json({ status: true })
 })
 
