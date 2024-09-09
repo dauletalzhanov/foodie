@@ -14,21 +14,15 @@ export default function OrderAddress(){
 	const [ addressData, setAddress] = useState({ ...location.state["addressData"] })
 
 	function onSameDelivery(event){
-		console.log("same delivery")
-
 		const addresses = document.querySelectorAll("#addresses > div > input")
 		for(let i=0; i<addresses.length; i++){
-			console.log(addresses)
 			addresses[i].removeAttribute("disabled");
 		}
 	}
 
 	function onDiffDelivery(event){
-		console.log("different delivery")
-
 		const addresses = document.querySelectorAll("#addresses > div > input")
 		for(let i=0; i<addresses.length; i++){
-			console.log(addresses)
 			addresses[i].setAttribute("disabled", "");
 		}
 
@@ -66,7 +60,6 @@ export default function OrderAddress(){
 		console.log( bundle )
 
 		navigate("/order/trophy", { state: { bundle } })
-
 	}
 
 

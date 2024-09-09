@@ -88,7 +88,7 @@ router.post('/:restaurant/add', async function(req, res, next) {
 
 router.post("/create/", async function(req, res, next){
   const body = req.body
-  const basket =  [ ...body["basket"] ]
+  const basket =  [ ...body["basket"]  ]
   const address = { ...body["address"] }
   const payment = { ...body["payment"] }
   const total = body["total"]
@@ -107,7 +107,7 @@ router.post("/create/", async function(req, res, next){
     TotalTime: duration,
     OrderDatetime: new Date(),
     FoodList: items,
-    CustomerID: body["customerID"] ? body["customerID"] : "66d8b7a6bceb367cb05169ae" // guest
+    CustomerID: body["customerID"] ? body["customerID"] : "66d8b7a6bceb367cb05169ae"
   }
   
   console.log( data )

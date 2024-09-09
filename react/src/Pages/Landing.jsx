@@ -26,51 +26,49 @@ export default function Landing(){
 	
 	return(<>
 		<div>
-			<div className="services">
-				<div>
-					<div className="square" >
-						<img src={menu} alt="menu" />
+			<section aria-label="Our Services" className="services">
+					<div>
+						<div className="square">
+							<img src={menu} alt="" />
+						</div>
+						<h3>1. Browse Menu</h3>
+						<div className="descrip">
+							<p>Browse menu from curated list of selections</p>
+						</div>
+					</div>
 
+					<div>
+						<div className="square">
+							<img src={orders} alt="" />
+						</div>
+						<h3>2. Manage Orders</h3>
+						<div className="descrip">
+							<p>Browse menu from curated list of selections</p>
+						</div>
 					</div>
-					<h3>1. Browse Menu</h3>
-					<div className="descrip">
-						<p>Browse menu from curated list of selections</p>
-					</div>
-				</div>
 
-				<div>
-					<div className="square" >
-						<img src={orders} alt="orders" />
+					<div>
+						<div className="square">
+							<img src={transactions} alt="" />
+						</div>
+						<h3>3. Transactions</h3>
+						<div className="descrip">
+							<p>Browse menu from curated list of selections</p>
+						</div>
 					</div>
-					<h3>2. Manage Orders</h3>
-					<div className="descrip">
-						<p>Browse menu from curated list of selections</p>
-					</div>
-				</div>
 
-				<div>
-					<div className="square" >
-						<img src={transactions} alt="transactions" />
+					<div>
+						<div className="square">
+							<img src={services} alt="" />
+						</div>
+						<h3>4. Provide Services</h3>
+						<div className="descrip">
+							<p>Browse menu from curated list of selections</p>
+						</div>
 					</div>
-					<h3>3. Transactions</h3>
-					<div className="descrip">
-						<p>Browse menu from curated list of selections</p>
-					</div>
-				</div>
+			</section>
 
-				<div>
-					<div className="square" >
-						<img src={services} alt="services" />
-					</div>
-					<h3>4. Provide Services</h3>
-					<div className="descrip">
-						<p>Browse menu from curated list of selections</p>
-					</div>
-				</div>
-			</div>
-
-			<div className="powered">
-
+			<section aria-label="Powered By" className="powered">
 				<h2>Powered By</h2>
 
 				<div>
@@ -89,9 +87,9 @@ export default function Landing(){
 						<p>Express</p>
 					</div>
 				</div>
-			</div>
+			</section >
 
-			<div className="testimonials">
+			<section aria-label="Testimonials" className="testimonials">
 				<div className="testimonial">
 					<div className="toppie">
 						<div className="profile-picture" >
@@ -180,7 +178,7 @@ export default function Landing(){
 					</div>
 				</div>
 
-			</div>
+			</section>
 
 			<div className="mozaic" >
 				<div>
@@ -250,6 +248,8 @@ export default function Landing(){
 				<hr />
 				
 			</footer >
+
+
 		</div>
 
 		<Helmet>
