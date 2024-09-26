@@ -39,30 +39,12 @@ export default function Shop(){
 		let foodItem = menu[food]
 		const foodName = foodItem["FoodName"]
 
-		setBalance(i => i + menu[food]["FoodPrice"])
-		
-		/*
-		if(basket.includes(foodItem)){
-			const foodIndex = basket.indexOf(foodItem)
-			foodItem["Quantity"]++
-			basket[foodIndex] = foodItem
-		}
-		else {
-			foodItem["Quantity"] = 1
-			basket.unshift(foodItem)
-		}
-		*/
-			
-		
+		setBalance(i => i + menu[food]["FoodPrice"])		
 		quantities[foodName] ? quantities[foodName]++ : quantities[foodName] = 1 
 		
-		if(quantities[foodName] == 1)
+		if( quantities[foodName] == 1 )
 			basket.unshift(foodItem)
 		
-		console.log(quantities)
-		console.log(basket)
-		
-
 		let node = document.querySelector(".total-product")
 		node.style.display = "flex"
 	}
@@ -77,20 +59,20 @@ export default function Shop(){
 		<div className="catalogue">
 			{menu.map((food, index) => {
 				return(<div className="catalogue-item" id={index} key={index}>
-						<h3>{food["FoodName"]}</h3>
-						<div className="pizza-red"></div>
+						<h3>{ food["FoodName"] }</h3>
+						<div className="pizza-red" ></div>
 						<p className="food-description" >
-							${food["FoodPrice"]} - {food["TimeTakes"]}Mins
+							${ food["FoodPrice"] } - { food["TimeTakes"] }Mins
 						</p>
 						<p>
-							<strong>Ingredients: </strong>
+							<strong> Ingredients: </strong>
 							{ food["IngredientsAvailable"].map((i, index) => {
-									const value = `${i.IngredientName}`+(index != food["IngredientsAvailable"].length-1?", ":"")
-									return(value)
+									const value = `${i.IngredientName}`+( index != food["IngredientsAvailable"].length-1 ? ", " : "" )
+									return( value )
 							})}
 						</p>
 
-						<button onClick={addButton} >ADD</button>
+						<button onClick={addButton} > ADD </button>
 					</div>)
 			})}
 		</div>
@@ -102,8 +84,7 @@ export default function Shop(){
 				<Link to="/order" state={{ basket, quantities }}>List of Items</Link>
 			</div>
 
-			<button className="order-button" onClick={orderItems}>Proceed to Order</button>
-
+			<button className="order-button" onClick={ orderItems }>Proceed to Order</button>
 		</div>
 
 
